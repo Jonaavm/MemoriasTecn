@@ -1,0 +1,22 @@
+/* src/componentes/Post.css */
+
+.Post {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #067a3b; /* un fondo para cada tranajo*/
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* el color de mi título */
+.Post-title {
+    color: #aaa9a9; /* probando colores*/
+    margin-bottom: 10px;
+    font-size: 1.5em; /* letra*/
+}
+
+/* cont coolores*/
+.Post-content {
+    color: #ffffff; /* blanco */
+    font-size: 1.1em; /* tamaño letra*/
+}
