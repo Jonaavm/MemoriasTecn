@@ -3,7 +3,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-  background-color: #3b0550d0; /* fondo general de la página */
+  /*background-color: #000000; */
 }
 
 .App {
@@ -11,13 +11,15 @@ body {
   padding: 20px;
 }
 
+
 .App-logo {
-  position: absolute;
-  top:20px;
-  left: 20px;  
-  height: 105px;
-  pointer-events: none;
+  position: fixed;  
+  top: 20px;        
+  left: 20px;       
+  z-index: 1000;    
+  width: 100px;     
 }
+
 
 /* anim logo*/
 @media (prefers-reduced-motion: no-preference) {
