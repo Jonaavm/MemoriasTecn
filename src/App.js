@@ -1,62 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import Aurora from './Backgrounds/Aurora/Aurora.tsx';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import logo from './imagenes/logo.png';
+import Particles from './Backgrounds/Particles/Particles.tsx';
+import TiltedCard from './Components/TiltedCard/TiltedCard.tsx';
+import logo from './imagenes/logo.png'
 
 function App() {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const [showTitle, setShowTitle] = useState(true);
 
-  const loadMoreData = () => {
-    setLoading(true);
-    setTimeout(() => {
-      const newItems = [];
-      for (let i = 0; i < 10; i++) {
-        newItems.push(`Nota ${(items.length + i + 1)}`);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {  // Cuando se haga scroll hacia abajo, se oculta el título
+        setShowTitle(false);
+      } else {
+        setShowTitle(true);
       }
-      setItems([...items, ...newItems]);
-      setLoading(false);
-      if (items.length >= 100) {
-        setHasMore(false);  // Detener cuando lleguemos al límite
-      }
-    }, 1500);
-  };
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="App">
-      {/* Fondo de Aurora */}
-      <Aurora
-        colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-        blend={0.5}
-        amplitude={1.0}
-        speed={0.5}
-      />
-
-      {/* Título Inicial */}
-      <div className="title-container">
-        <h1>Bienvenido a mi Blog de Notas</h1>
+      <div className="particles-container">
+        <Particles
+          particleColors={['#ffffff', '#ffffff']}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
       </div>
+      <img src={logo} className='App-logo' alt='logo.png'></img>
 
-   
-      <img src={logo} className="App-logo" alt="logo" />
+      {/* Título que desaparece al hacer scroll */}
+      {showTitle && (
+        <div className="title-container">
+          <h1>Bienvenido a mi Blog de Notas</h1>
+        </div>
+      )}
 
-      {/* Contenido */}
-      <div className="content">
-        <InfiniteScroll
-          dataLength={items.length}
-          next={loadMoreData}
-          hasMore={hasMore}
-          loader={loading && <h4>Loading...</h4>}
-          endMessage={<p>No more notes to load.</p>}
-        >
-          {items.map((item, index) => (
-            <div className="note" key={index}>
-              <p>{item}</p>
-            </div>
-          ))}
-        </InfiniteScroll>
+      {/* Fichas Técnicas */}
+      <div className="card-container">
+        <TiltedCard
+          imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+          altText="Kendrick Lamar - GNX Album Cover"
+          captionText="Kendrick Lamar - GNX"
+          containerHeight="300px"
+          containerWidth="300px"
+          imageHeight="300px"
+          imageWidth="300px"
+          rotateAmplitude={12}
+          scaleOnHover={1.2}
+          showMobileWarning={false}
+          showTooltip={true}
+          displayOverlayContent={true}
+          overlayContent={<p className="tilted-card-demo-text">Kendrick Lamar - GNX</p>}
+        />
+
+        {/* Puedes agregar más TiltedCards aquí */}
       </div>
     </div>
   );
