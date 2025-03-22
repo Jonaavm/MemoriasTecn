@@ -3,7 +3,7 @@ import Particles from '../Backgrounds/Particles/Particles.tsx';
 import './Global.css'
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
-
+import { MorphingText } from '../components/magicui/morphing-text.jsx';
 
 const Leer = () => {
   return (
@@ -23,6 +23,7 @@ const Leer = () => {
           disableRotation={false}
         />
       </div>
+      <div><MorphingText texts={["Text1", "Text2", "Text3"]} /></div>
       
     </div>
   );

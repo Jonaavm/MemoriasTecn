@@ -16,8 +16,7 @@ import Hola from './pagina/Hola.js';
 import Leer from './pagina/Leer.js';
 import Ciclo from './pagina/Ciclo.js';
 import SumaCiclo from './pagina/SumaCiclo.js';
-
-
+import { BorderBeam, MorphingText } from './components/magicui/border-beam';
 function App() {
   return (
     <Router>
@@ -33,7 +32,6 @@ function App() {
     </Router>
   );
 }
-
 
 function Home() {
   const [showTitle, setShowTitle] = useState(true);
@@ -70,20 +68,22 @@ function Home() {
           disableRotation={false}
         />
       </div>
+
+      <img src={logo} className='App-logo' alt='logo.png' />
       
-        <img src={logo} className='App-logo' alt='logo.png' />
-    
       {/* Título */}
       {showTitle && (
         <div className="title-container">
-          <h1>Bienvenido a mi Blog de Notas</h1>
+          <h1>Bienvenido a mi blog de notas
+            </h1>
         </div>
       )}
 
       {/* Fichas Técnicas */}
       <div className="card-container">
-
+      
         <div onClick={() => handleCardClick('/suma')}>
+          
           <TiltedCard
             imageSrc={p1}
             altText="Suma"
@@ -101,8 +101,9 @@ function Home() {
               <p className="descripcion-imagen">Suma</p>
             }
           />
+          
         </div>
-
+            
         <div onClick={() => handleCardClick('/hola')}>
           <TiltedCard
             imageSrc={p2}

@@ -1,4 +1,3 @@
-import React from 'react';
 import Particles from '../Backgrounds/Particles/Particles.tsx';
 import './Global.css';
 import { Link } from 'react-router-dom';
@@ -7,6 +6,7 @@ import img1 from '../imagenes/p1.jpg';
 import img2 from '../imagenes/p2.jpg'; 
 import img3 from '../imagenes/p3.jpg'; 
 import img4 from '../imagenes/p4.jpg'; 
+import { MorphingText } from '../components/magicui/morphing-text.jsx';
 const Ciclo = () => {
   return (
     <div className="page-container">
@@ -28,11 +28,9 @@ const Ciclo = () => {
       </div>
       
       <div className="content">
+        <MorphingText texts={["Memoria", "Tecnica","Ciclo", "ASM"]} />
         <div className="glass-container">
-          <div className="content-left">
-            <h1 className="Post-title">Memoria tecnica de Ciclo.asm</h1>
-            <p className="Post-content">La info comienza con </p>
-          </div>
+          
           
           <div className="content-right">
             <h2 className="Sub-theme">Proceso de enlazado</h2>
@@ -50,10 +48,7 @@ const Ciclo = () => {
           </div>
         </div>
         <div className="glass-container">
-          <div className="content-left">
-            <h1 className="Post-title">Memoria tecnica de Ciclo.asm</h1>
-            <p className="Post-content">La info comienza con </p>
-          </div>
+          
           
           <div className="content-right">
             <h2 className="Sub-theme">Proceso de enlazado</h2>
