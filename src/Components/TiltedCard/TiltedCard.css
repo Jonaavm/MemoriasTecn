@@ -1,6 +1,8 @@
-/*
-	Installed from https://reactbits.dev/ts/default/
-*/
+.descripcion-imagen {
+  color: rgb(255, 255, 255);         
+  font-size: 18px;
+  font-weight: bold;
+}
 
 .tilted-card-figure {
   position: relative;
@@ -19,6 +21,7 @@
   text-align: center;
   font-size: 0.875rem;
   display: none;
+
 }
 
 @media (max-width: 640px) {
