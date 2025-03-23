@@ -74,7 +74,7 @@
 .code-block {
   white-space: pre;
   background-color: #282c34;
-  color: #abb2bf;
+  color: #106608;
   padding: 16px;
   border-radius: 6px;
   overflow-x: auto;
@@ -87,7 +87,7 @@
   font-weight: bold;
 }
 
-/* Para destacar palabras clave en el código */
+
 .code-block .keyword {
   color: #c678dd;
 }

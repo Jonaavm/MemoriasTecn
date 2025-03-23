@@ -28,7 +28,7 @@ const SumaCiclo = () => {
 
       <div className="content"
         style={{ position: 'relative' }}>
-        <MorphingText texts={["Memoria", "Tecnica", "Suma con Ciclo", "ASM"]} />
+        <MorphingText texts={["Memoria", "Tecnica", "Piramide", "ASM + GCC"]} />
         <div className="glass-container">
           <div className="content-left">
             <h1 className="Post-title">Explicación del Código</h1>
