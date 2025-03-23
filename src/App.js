@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
-import Particles from './Backgrounds/Aurora/Aurora.tsx';
+import Dither from './Backgrounds/Dither/Dither.tsx';
 import TiltedCard from './Components/TiltedCard/TiltedCard.tsx';
 import logo from './imagenes/logo.png';
 import p1 from './imagenes/p1.png';
@@ -27,7 +27,7 @@ import CalculadoraG from './pagina/calcGCC.js';
 import Par from './pagina/par.jsx';
 import LeerGCC from './pagina/LeerGCC.js';
 import SumaGcc from './pagina/SumaGcc.js';
-import Piramide from  './pagina/Piramide.js';
+import Piramide from './pagina/Piramide.js';
 import Factorial from './pagina/factorial.js'
 import Raiz from './pagina/Raiz.js';
 import { BorderBeam } from './components/magicui/border-beam';
@@ -43,13 +43,13 @@ function App() {
         <Route path="/leer" element={<Leer />} />
         <Route path="/ciclo" element={<Ciclo />} />
         <Route path="/suma-ciclo" element={<SumaCiclo />} />
-        <Route path="/calcGC" element={<CalculadoraG/>}/>
-        <Route path='/par' element={<Par/>}/>
-        <Route path='/raiz' element={<Raiz/>}/>
-        <Route path='/sumagcc' element={<SumaGcc/>}/>
-        <Route path='/piramide' element={<Piramide/>}/>
-        <Route path='/leerGcc' element={<LeerGCC/>}/>
-        <Route path='/factor' element={<Factorial/>}/>
+        <Route path="/calcGC" element={<CalculadoraG />} />
+        <Route path='/par' element={<Par />} />
+        <Route path='/raiz' element={<Raiz />} />
+        <Route path='/sumagcc' element={<SumaGcc />} />
+        <Route path='/piramide' element={<Piramide />} />
+        <Route path='/leerGcc' element={<LeerGCC />} />
+        <Route path='/factor' element={<Factorial />} />
       </Routes>
     </Router>
   );
@@ -77,429 +77,447 @@ function Home() {
   };
 
   return (
-    
-        <div className="App">
-          
-          <img src={logo} className='App-logo' alt='logo.png' />
 
-          {/* Título */}
-          {showTitle && (
-            <div className="title-container">
-              <h1>Bienvenido a mi blog de notas
-              </h1>
-            </div>
-          )}
+    <div className="App">
+      <div style={{ 
+        position: "fixed", 
+        top: 0, 
+        left: 0, 
+        width: "100vw", 
+        height: "100vh", 
+        zIndex: -1 
+      }}>
+        <Dither
+          waveColor={[0, 0.4, 1]}
+          disableAnimation={false}
+          enableMouseInteraction={true}
+          mouseRadius={0.3}
+          colorNum={4}
+          waveAmplitude={0.3}
+          waveFrequency={3}
+          waveSpeed={0.05}
+        />
+      </div>
+      <img src={logo} className='App-logo' alt='logo.png' />
 
-          {/* Fichas Técnicas */}
-          <div className="card-container">
-
-            <div onClick={() => handleCardClick('/suma')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}
-              className="card-wrapper">
-              <TiltedCard
-                imageSrc={p1}
-                altText="Suma"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Suma</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/hola')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p2}
-                altText="Hola"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Hola</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/leer')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p3}
-                altText="Leer"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Leer</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/ciclo')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p4}
-                altText="Ciclo"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Ciclo</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/suma-ciclo')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p5}
-                altText="Suma y Ciclo"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Suma y Ciclo</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/calculadora')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p6}
-                altText="Calculadora"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Calculadora</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/calcGC')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p7}
-                altText="CalculadoraGCC"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">CalculadoraGCC</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/par')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p8}
-                altText="Par"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Par</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/piramide')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p9}
-                altText="Piramide"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Piramide</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/Factor')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p10}
-                altText="Factor"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Factor</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#FFFFFF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/Raiz')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p11}
-                altText="Raiz"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Raiz</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/hola')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p12}
-                altText="Hola"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Hola</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-            <div onClick={() => handleCardClick('/hola')}
-              style={{
-                position: 'relative',
-                borderRadius: '12px',
-                border: '1px solid transparent'
-              }}>
-              <TiltedCard
-                imageSrc={p13}
-                altText="Hola"
-                captionText="Memoria Tecnica"
-                containerHeight="300px"
-                containerWidth="300px"
-                imageHeight="300px"
-                imageWidth="300px"
-                rotateAmplitude={12}
-                scaleOnHover={1.2}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="descripcion-imagen">Hola</p>
-                }
-              />
-              <BorderBeam
-                duration={8} size={100}
-                colorFrom="#0000FF"
-                colorTo="#6e028c"
-
-              />
-            </div>
-
-          </div>
+      {/* Título */}
+      {showTitle && (
+        <div className="title-container">
+          <h1>Bienvenido a mi blog de notas
+          </h1>
         </div>
-        );
+      )}
+
+      {/* Fichas Técnicas */}
+      <div className="card-container">
+
+        <div onClick={() => handleCardClick('/suma')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}
+          className="card-wrapper">
+          <TiltedCard
+            imageSrc={p1}
+            altText="Suma"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Suma</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/hola')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p2}
+            altText="Hola"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Hola</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/leer')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p3}
+            altText="Leer"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Leer</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/ciclo')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p4}
+            altText="Ciclo"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Ciclo</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/suma-ciclo')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p5}
+            altText="Suma y Ciclo"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Suma y Ciclo</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/calculadora')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p6}
+            altText="Calculadora"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Calculadora</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/calcGC')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p7}
+            altText="CalculadoraGCC"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">CalculadoraGCC</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/par')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p8}
+            altText="Par"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Par</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/piramide')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p9}
+            altText="Piramide"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Piramide</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/Factor')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p10}
+            altText="Factor"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Factor</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#FFFFFF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/Raiz')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p11}
+            altText="Raiz"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Raiz</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/hola')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p12}
+            altText="Hola"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Hola</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+        <div onClick={() => handleCardClick('/hola')}
+          style={{
+            position: 'relative',
+            borderRadius: '12px',
+            border: '1px solid transparent'
+          }}>
+          <TiltedCard
+            imageSrc={p13}
+            altText="Hola"
+            captionText="Memoria Tecnica"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="descripcion-imagen">Hola</p>
+            }
+          />
+          <BorderBeam
+            duration={8} size={100}
+            colorFrom="#0000FF"
+            colorTo="#6e028c"
+
+          />
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
-        export default App;
+export default App;
