@@ -1,6 +1,3 @@
-/*
-	Installed from https://reactbits.dev/ts/default/
-*/
 
 import React, { useEffect, useRef } from "react";
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";
@@ -22,7 +19,7 @@ interface ParticlesProps {
   className?: string;
 }
 
-const defaultColors: string[] = ["#a60ad3", "#a60ad3", "#a60ad3"];
+const defaultColors: string[] = ["#000000", "#000000", "#000000"];
 
 const hexToRgb = (hex: string): [number, number, number] => {
   hex = hex.replace(/^#/, "");

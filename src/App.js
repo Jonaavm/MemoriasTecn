@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
-import Dither from './Backgrounds/Dither/Dither.tsx';
 import TiltedCard from './Components/TiltedCard/TiltedCard.tsx';
 import logo from './imagenes/logo.png';
 import p1 from './imagenes/p1.png';
@@ -31,6 +30,8 @@ import Piramide from './pagina/Piramide.js';
 import Factorial from './pagina/factorial.js'
 import Raiz from './pagina/Raiz.js';
 import { BorderBeam } from './components/magicui/border-beam';
+import Aurora from './Backgrounds/Aurora/Aurora.tsx';
+import BlurText from './TextAnimations/BlurText/BlurText.tsx';
 
 function App() {
   return (
@@ -79,23 +80,21 @@ function Home() {
   return (
 
     <div className="App">
-      <div style={{ 
-        position: "fixed", 
-        top: 0, 
-        left: 0, 
-        width: "100vw", 
-        height: "100vh", 
-        zIndex: -1 
+      <div style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        zIndex: -1
+
+
       }}>
-        <Dither
-          waveColor={[0, 0.4, 1]}
-          disableAnimation={false}
-          enableMouseInteraction={true}
-          mouseRadius={0.3}
-          colorNum={4}
-          waveAmplitude={0.3}
-          waveFrequency={3}
-          waveSpeed={0.05}
+        <Aurora
+          colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+          blend={1.0}
+          amplitude={1.0}
+          speed={0.5}
         />
       </div>
       <img src={logo} className='App-logo' alt='logo.png' />
@@ -103,8 +102,7 @@ function Home() {
       {/* Título */}
       {showTitle && (
         <div className="title-container">
-          <h1>Bienvenido a mi blog de notas
-          </h1>
+          
         </div>
       )}
 
