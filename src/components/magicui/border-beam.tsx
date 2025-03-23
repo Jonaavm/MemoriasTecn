@@ -2,9 +2,7 @@ import { motion, MotionStyle, Transition } from "motion/react";
 import { cn } from "../../lib/utils";
 
 interface BorderBeamProps {
-  /**
-   * The size of the border beam.
-   */
+
   size?: number;
   /**
    * The duration of the border beam.
