@@ -1,5 +1,5 @@
 import React from 'react';
-import Particles from '../Backgrounds/Particles/Particles.tsx';
+import Aurora from '../Backgrounds/Aurora/Aurora.tsx';
 import './Global.css';
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
@@ -13,15 +13,11 @@ const Calculadora = () => {
       </Link>
 
       <div className="particles-container">
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
+        <Aurora
+          colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+          blend={1.0}
+          amplitude={1.0}
+          speed={0.5}
         />
       </div>
 
@@ -41,14 +37,13 @@ const Calculadora = () => {
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-            <div className="glass-container">
-              <p className='Post-content'>Ensamblaje:
-                nasm -f elf32 calculadora.asm -o calculadora.o</p>
-              <p className='Post-content'>Enlazado:
-                ld -m elf_i386 calculadora.o -o calculadora</p>
-              <p className='Post-content'>Ejecución:
-                ./calculadora</p>
-            </div>
+            <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
+              nasm -f elf32 calculadora.asm -o calculadora.o</pre>
+            <p className='Post-content'>Enlazado:</p><pre className='code-block'>
+              ld -m elf_i386 calculadora.o -o calculadora</pre>
+            <p className='Post-content'>Ejecución:</p>
+              <pre className='code-block'>./calculadora</pre>
+
 
           </div>
         </div>
@@ -74,21 +69,27 @@ const Calculadora = () => {
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
-            <p className='Post-content'><span className='resaltado'>.data</span>: S: Contiene los mensajes mostrados al usuario y mensajes de error.
-              section .data
-              msg1 db "Ingresa el primer número: ", 0
-              msg2 db "Ingresa el segundo número: ", 0
-              msg_result db "El resultado es: ", 0
-              msg_error db "Operación no válida", 0</p>
-            <p className='Post-content'><span className='resaltado'>.bss</span>: Almacena variables sin inicializar que contienen números ingresados y resultados.
-              section .bss
-              opcion resb 2
-              num1 resb 2
-              num2 resb 2
-              resultado resb 2</p>
-            <p className='Post-content'><span className='resaltado'>.text</span>    • Contiene el código ejecutable del programa.
-              section .text
-              global _start</p>
+            <p className='Post-content'><span className='resaltado'>.data</span>: S: 
+            Contiene los mensajes mostrados al usuario y mensajes de error.</p>
+            <pre className='code-block'>
+              {`section .data
+    msg1 db "Ingresa el primer número: ", 0
+    msg2 db "Ingresa el segundo número: ", 0
+    msg_result db "El resultado es: ", 0
+    msg_error db "Operación no válida", 0`}</pre>
+            <p className='Post-content'><span className='resaltado'>.bss</span>: 
+            Almacena variables sin inicializar que contienen números ingresados y resultados.</p>
+            <pre className='code-block'>
+              {`section .bss
+    opcion resb 2
+    num1 resb 2
+    num2 resb 2
+    resultado resb 2`}</pre>
+            <p className='Post-content'><span className='resaltado'>.text</span> 
+            Contiene el código ejecutable del programa.</p>
+              <pre className='code-block'>
+                {`section .text
+      global _start`}</pre>
           </div>
         </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Particles from '../Backgrounds/Particles/Particles.tsx';
+import Aurora from '../Backgrounds/Aurora/Aurora.tsx';
 import './Global.css'
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
@@ -14,15 +14,11 @@ const SumaCiclo = () => {
       </Link>
 
       <div className="particles-container">
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
+        <Aurora
+          colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+          blend={1.0}
+          amplitude={1.0}
+          speed={0.5}
         />
       </div>
 
@@ -43,16 +39,16 @@ const SumaCiclo = () => {
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-            
-              <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-                {`nasm -f elf32 programa.asm -o programa.o`}
-              </pre>
-              <p className='Post-content'>Enlazado:</p>
-                <pre className='code-block'>
-            {`ld -m elf_i386 programa.o -o programa`}</pre>
-              <p className='Post-content'>Ejecución:</p>
-                <pre className='code-block'> {`./programa`}</pre>
-            
+
+            <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
+              {`nasm -f elf32 programa.asm -o programa.o`}
+            </pre>
+            <p className='Post-content'>Enlazado:</p>
+            <pre className='code-block'>
+              {`ld -m elf_i386 programa.o -o programa`}</pre>
+            <p className='Post-content'>Ejecución:</p>
+            <pre className='code-block'> {`./programa`}</pre>
+
 
           </div>
         </div>

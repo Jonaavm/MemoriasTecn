@@ -71,16 +71,22 @@
   margin: 20px 0;
 }
 
+
 .code-block {
-  white-space: pre;
-  background-color: #282c34;
+  white-space: pre-wrap; /* Cambia de pre a pre-wrap para permitir saltos de línea */
+  background-color: #1a1b1d;
   color: #106608;
   padding: 16px;
   border-radius: 6px;
-  overflow-x: auto;
+  overflow-x: auto; /* Mantén esto para código muy largo */
   font-family: monospace;
-  font-size: 1.15rem;
+  font-size: clamp(0.85rem, 2vw, 1.15rem); /* Tamaño de fuente responsivo */
+  max-height: 500px; /* Altura máxima con scroll */
+  line-height: 1.5; /* Mejor espaciado entre líneas */
+  box-sizing: border-box; /* Para que el padding no afecte el ancho */
+  width: 100%; /* Utiliza todo el ancho disponible */
 }
+
 
 .resaltado {
   color: #e06c75;

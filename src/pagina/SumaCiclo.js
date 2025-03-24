@@ -1,5 +1,5 @@
 import React from 'react';
-import Particles from '../Backgrounds/Particles/Particles.tsx';
+import Aurora from '../Backgrounds/Aurora/Aurora.tsx';
 import './Global.css'
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
@@ -14,15 +14,11 @@ const SumaCiclo = () => {
       </Link>
 
       <div className="particles-container">
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
+        <Aurora
+          colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+          blend={1.0}
+          amplitude={1.0}
+          speed={0.5}
         />
       </div>
 
@@ -43,16 +39,16 @@ const SumaCiclo = () => {
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-            
-              <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-                {`nasm -f elf32 programa.asm -o programa.o`}
-              </pre>
-              <p className='Post-content'>Enlazado:</p>
-                <pre className='code-block'>
-            {`ld -m elf_i386 programa.o -o programa`}</pre>
-              <p className='Post-content'>Ejecución:</p>
-                <pre className='code-block'> {`./programa`}</pre>
-            
+
+            <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
+              {`nasm -f elf32 programa.asm -o programa.o`}
+            </pre>
+            <p className='Post-content'>Enlazado:</p>
+            <pre className='code-block'>
+              {`ld -m elf_i386 programa.o -o programa`}</pre>
+            <p className='Post-content'>Ejecución:</p>
+            <pre className='code-block'> {`./programa`}</pre>
+
 
           </div>
         </div>
@@ -88,90 +84,7 @@ const SumaCiclo = () => {
     msg db "Ingresa un número: ", 0
     msg_result db "Número ingresado: ", 0
     newline db 10, 0  ; Salto de línea`}
-            </pre>
-            <div className="code-container">
-              <p className='Post-content'>
-                <span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.
-              </p>
-              <pre className='code-block'>
-                {`section .text
-    global _start
-
-    _start:
-    ; Mostrar mensaje 1
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg1
-    mov edx, 26
-    int 0x80
-
-    ; Leer primer número
-    mov eax, 3
-    mov ebx, 0
-    mov ecx, num1
-    mov edx, 2
-    int 0x80
-
-    ; Mostrar mensaje 2
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg2
-    mov edx, 27
-    int 0x80
-
-    ; Leer segundo número
-    mov eax, 3
-    mov ebx, 0
-    mov ecx, num2
-    mov edx, 2
-    int 0x80
-
-    ; Convertir caracteres ASCII a números y sumar
-    mov al, [num1]  
-    sub al, '0'
-    mov bl, [num2]  
-    sub bl, '0'
-    add al, bl
-    mov [resultado], al
-
-    ; Mostrar mensaje del resultado
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg_result
-    mov edx, 11
-    int 0x80
-
-    ; Convertir resultado a ASCII y mostrar
-    mov al, [resultado]
-    add al, '0'
-    mov [resultado], al
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, resultado
-    mov edx, 1
-    int 0x80
-
-    ; Preparar el ciclo
-    movzx ecx, byte [resultado]  
-    sub ecx, '0'                 
-    jle .exit                    
-
-    .loop:
-    push ecx
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, hello
-    mov edx, hello_len
-    int 0x80
-    pop ecx
-    loop .loop
-
-    .exit:
-     mov eax, 1
-     xor ebx, ebx
-     int 0x80`}
-              </pre>
-            </div>
+            </pre>            
           </div>
         </div>
 

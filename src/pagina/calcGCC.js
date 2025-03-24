@@ -1,8 +1,8 @@
 import React from 'react';
-import Particles from '../Backgrounds/Particles/Particles.tsx';
 import './Global.css'
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
+import Aurora from '../Backgrounds/Aurora/Aurora.tsx';
 import { MorphingText } from '../components/magicui/morphing-text.jsx';
 
 
@@ -14,16 +14,12 @@ const SumaCiclo = () => {
       </Link>
 
       <div className="particles-container">
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
+        <Aurora
+                  colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+                  blend={1.0}
+                  amplitude={1.0}
+                  speed={0.5}
+                />
       </div>
 
       <div className="content"
@@ -31,31 +27,28 @@ const SumaCiclo = () => {
         <MorphingText texts={["Memoria", "Tecnica", "Calculadora Gcc", "ASM + GCC"]} />
         <div className="glass-container">
           <div className="content-left">
-            <h1 className="Post-title">Explicación del Código</h1>
-            <p className="Post-content">Este programa en ensamblador NASM para la arquitectura x86 de 32 bits realiza las siguientes operaciones:
-              Solicita al usuario que ingrese dos números.
-              Convierte los números ingresados de ASCII a valores numéricos.
-              Suma los dos números y almacena el resultado.
-              Muestra el resultado en pantalla.
-              Usa el resultado de la suma como un contador para imprimir el mensaje "Hello" repetidamente.
-              Finaliza la ejecución utilizando int 0x80.</p>
+            <h1 className="Post-title">Descripción General</h1>
+            <p className="Post-content">Este programa en ensamblador NASM para la 
+              arquitectura x86 de 32 bits permite al usuario realizar operaciones 
+              aritméticas básicas (suma, resta, multiplicación y división) utilizando 
+              funciones estándar de C (printf y scanf).El programa maneja adecuadamente errores de división por cero.</p>
           </div>
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
-            <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
+            <p className='Post-content'>PEste programa se compila utilizando NASM y se enlaza con gcc debido al uso de 
+              funciones estándar de C (printf y scanf).</p>
             
               <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-                {`nasm -f elf32 programa.asm -o programa.o`}
+                {`nasm -f elf32 calculadora.asm -o calculadora.o`}
               </pre>
               <p className='Post-content'>Enlazado:</p>
                 <pre className='code-block'>
-            {`ld -m elf_i386 programa.o -o programa`}</pre>
+            {`gcc -m32 -o calculadora calculadora.o -nostartfiles`}</pre>
               <p className='Post-content'>Ejecución:</p>
-                <pre className='code-block'> {`./programa`}</pre>
-            
-
+                <pre className='code-block'> {`./calculadora`}</pre>
           </div>
         </div>
+        
 
         <div className="glass-container">
           <div className="content-right">
@@ -75,103 +68,125 @@ const SumaCiclo = () => {
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
-            <p className='Post-content'><span className='resaltado'>.bss</span>: Sección para variables sin inicializar que almacenan números y resultados.</p>
+            <p className='Post-content'><span className='resaltado'>.bss</span>: 
+            Contiene mensajes y formatos utilizados para printf y scanf.</p>
+            <pre className='code-block'>
+              {`section .
+    prompt1 db "Ingrese el primer numero: ", 0
+    prompt2 db "Ingrese el segundo numero: ", 0
+    prompt3 db "Ingrese la operacion (+, -, *, /): ", 0
+    fmt_in_num db "%d", 0
+    fmt_in_char db " %c", 0
+    fmt_out db "Resultado: %d", 10, 0
+    error_msg db "Error: Division por cero", 10, 0`}
+            </pre>
+            <p className='Post-content'><span className='resaltado'>.data</span>: 
+            Sección para variables sin inicializar que almacenan números y resultados.</p>
             <pre className='code-block'>
               {`section .bss
-    num1 resb 1
-    num2 resb 1
-    resultado resb 1`}
-            </pre>
-            <p className='Post-content'><span className='resaltado'>.data</span>: Sección para datos inicializados como mensajes y longitudes de mensajes.</p>
-            <pre className='code-block'>
-              {`section .data
-    msg db "Ingresa un número: ", 0
-    msg_result db "Número ingresado: ", 0
-    newline db 10, 0  ; Salto de línea`}
+    num1 resd 1
+    num2 resd 1
+    oper resb 1
+    result resd 1`}
             </pre>
             <div className="code-container">
               <p className='Post-content'>
-                <span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.
+                <span className='resaltado'>.text</span>: 
+                Sección para el código ejecutable del programa.
               </p>
               <pre className='code-block'>
                 {`section .text
-    global _start
+    global main
+    extern printf, scanf
 
-    _start:
-    ; Mostrar mensaje 1
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg1
-    mov edx, 26
-    int 0x80
+main:
+    ; Pedir primer número
+    push prompt1
+    call printf
+    add esp, 4
 
-    ; Leer primer número
-    mov eax, 3
-    mov ebx, 0
-    mov ecx, num1
-    mov edx, 2
-    int 0x80
+    push num1
+    push fmt_in_num
+    call scanf
+    add esp, 8
 
-    ; Mostrar mensaje 2
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg2
-    mov edx, 27
-    int 0x80
+    ; Pedir segundo número
+    push prompt2
+    call printf
+    add esp, 4
 
-    ; Leer segundo número
-    mov eax, 3
-    mov ebx, 0
-    mov ecx, num2
-    mov edx, 2
-    int 0x80
+    push num2
+    push fmt_in_num
+    call scanf
+    add esp, 8
 
-    ; Convertir caracteres ASCII a números y sumar
-    mov al, [num1]  
-    sub al, '0'
-    mov bl, [num2]  
-    sub bl, '0'
-    add al, bl
-    mov [resultado], al
+    ; Pedir operación
+    push prompt3
+    call printf
+    add esp, 4
 
-    ; Mostrar mensaje del resultado
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg_result
-    mov edx, 11
-    int 0x80
+    push oper
+    push fmt_in_char
+    call scanf
+    add esp, 8
 
-    ; Convertir resultado a ASCII y mostrar
-    mov al, [resultado]
-    add al, '0'
-    mov [resultado], al
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, resultado
-    mov edx, 1
-    int 0x80
+    ; Cargar operandos en registros
+    mov eax, [num1]  ; Cargar primer número en EAX
+    mov ebx, [num2]  ; Cargar segundo número en EBX
 
-    ; Preparar el ciclo
-    movzx ecx, byte [resultado]  
-    sub ecx, '0'                 
-    jle .exit                    
+    ; Evaluar la operación ingresada
+    mov cl, [oper]   
+    cmp cl, '+'
+    je sumar
+    cmp cl, '-'
+    je restar
+    cmp cl, '*'
+    je multiplicar
+    cmp cl, '/'
+    je dividir
+    jmp fin          ; Si no es una operación válida, termina
 
-    .loop:
-    push ecx
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, hello
-    mov edx, hello_len
-    int 0x80
-    pop ecx
-    loop .loop
+sumar:
+    add eax, ebx
+    jmp guardar_resultado
 
-    .exit:
-     mov eax, 1
-     xor ebx, ebx
-     int 0x80`}
+restar:
+    sub eax, ebx
+    jmp guardar_resultado
+
+multiplicar:
+    imul ebx
+    jmp guardar_resultado
+
+dividir:
+    cmp ebx, 0
+    je error_division
+    cdq            ; Extender signo en EDX:EAX para división
+    idiv ebx
+    jmp guardar_resultado
+
+error_division:
+    push error_msg
+    call printf
+    add esp, 4
+    jmp fin
+
+guardar_resultado:
+    mov [result], eax
+
+    ; Imprimir resultado
+    push dword [result]
+    push fmt_out
+    call printf
+    add esp, 8
+
+fin:
+    xor eax, eax
+    ret
+`}
               </pre>
-            </div>
+              </div>
+      
           </div>
         </div>
 
@@ -179,12 +194,12 @@ const SumaCiclo = () => {
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Observaciones</h2>
-            <p className='Post-content'>El programa convierte los números ingresados de ASCII a sus valores numéricos antes de realizar la suma.</p>
-            <p className='Post-content'>Utiliza la llamada al sistema sys_write para mostrar mensajes y resultados.</p>
-            <p className='Post-content'>Utiliza el resultado de la suma para imprimir el mensaje "Hello" repetidamente usando un bucle loop.</p>
-            <p className='Post-content'>Es compatible con sistemas operativos Linux que utilizan int 0x80 para llamadas al sistema.</p>
+            <p className='Post-content'>Este programa utiliza las funciones printf y scanf para interactuar con el usuario.</p>
+            <p className='Post-content'>Se enlaza utilizando gcc debido al uso de funciones externas estándar.</p>
+            <p className='Post-content'>El uso de cdq asegura que la división funcione correctamente al manejar números negativos.</p>
+            <p className='Post-content'>El uso de ret permite que el programa retorne al sistema después de ejecutarse.</p>
             <h2 className='Sub-theme'>Errores Comunes</h2>
-            <p className='Post-content'>No realizar la conversión correcta de ASCII a números antes de realizar la suma.</p>
+            <p className='Post-content'>No cargar correctamente los números desde la memoria antes de realizar operaciones.</p>
             <p className='Post-content'>Intentar ingresar valores no numéricos, lo cual causará errores.</p>
           </div>
         </div>

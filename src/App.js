@@ -102,7 +102,7 @@ function Home() {
       {/* Título */}
       {showTitle && (
         <div className="title-container">
-          
+          <h1>Bienvenido a mi blog de notas</h1>
         </div>
       )}
 
@@ -124,7 +124,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -155,7 +155,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -186,7 +186,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -217,7 +217,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -248,7 +248,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -279,7 +279,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -310,7 +310,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -341,7 +341,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -372,7 +372,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -403,7 +403,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -434,7 +434,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -465,7 +465,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}
@@ -496,7 +496,7 @@ function Home() {
             containerWidth="300px"
             imageHeight="300px"
             imageWidth="300px"
-            rotateAmplitude={12}
+            rotateAmplitude={14}
             scaleOnHover={1.2}
             showMobileWarning={false}
             showTooltip={true}

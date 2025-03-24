@@ -1,4 +1,4 @@
-import Particles from '../Backgrounds/Particles/Particles.tsx';
+import Aurora from '../Backgrounds/Aurora/Aurora';
 import './Global.css';
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
@@ -12,16 +12,12 @@ const Ciclo = () => {
       </Link>
 
       <div className="particles-container">
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
+        <Aurora
+                        colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+                        blend={1.0}
+                        amplitude={1.0}
+                        speed={0.5}
+                      />
       </div>
 
       <div className="content"
@@ -38,15 +34,18 @@ const Ciclo = () => {
           </div>
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
-            <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-            <div className="glass-container">
-              <p className='Post-content'>Ensamblaje:
-                nasm -f elf32 ciclo.asm -o ciclo.o</p>
-              <p className='Post-content'>Enlazado:
-                ld -m elf_i386 ciclo.o -o ciclo</p>
-              <p className='Post-content'>Ejecución:
-                ./ciclo</p>
-            </div>
+            <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en 
+              x86 de 32 bits, se deben seguir los siguientes pasos:</p>
+              <p className='Post-content'>Ensamblaje:</p>
+              <pre className='code-block'>
+                nasm -f elf32 ciclo.asm -o ciclo.o</pre>
+              <p className='Post-content'>Enlazado:</p>
+              <pre className='code-block'>
+                ld -m elf_i386 ciclo.o -o ciclo</pre>
+              <p className='Post-content'>Ejecución:</p>
+              <pre className='code-block'>
+                ./ciclo</pre>
+            
 
           </div>
         </div>
@@ -69,27 +68,32 @@ const Ciclo = () => {
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
-            <p className='Post-content'><span className='resaltado'>.data</span>: section .data
-              hello db "Hello", 10  ; Mensaje con salto de línea
-              hello_len equ $ - hello
-              N equ 10  ; Número de repeticiones</p>
-            <p className='Post-content'><span className='resaltado'>.text</span> ección para el código ejecutable del programa.
-              section .text
-              global _start
-              _start:
-              mov ecx, N
-              .loop:
-              push ecx
-              mov edx, hello_len
-              mov ecx, hello
-              mov ebx, 1
-              mov eax, 4
-              int 0x80
-              pop ecx
-              loop .loop
-              mov eax, 1
-              xor ebx, ebx
-              int 0x80</p>
+            <p className='Post-content'><span className='resaltado'>
+              .data</span>: </p>
+              <pre className='code-block'>
+                {`section .data
+    hello db "Hello", 10  ; Mensaje con salto de línea
+    hello_len equ $ - hello
+    N equ 10  ; Número de repeticiones`}</pre>
+            <p className='Post-content'><span className='resaltado'>
+              .text</span> ección para el código ejecutable del programa.</p>
+              <pre className='code-block'>
+              {`section .text
+    global _start
+    _start:
+    mov ecx, N
+    .loop:
+    push ecx
+    mov edx, hello_len
+    mov ecx, hello
+    mov ebx, 1
+    mov eax, 4
+    int 0x80
+    pop ecx
+    loop .loop
+    mov eax, 1
+    xor ebx, ebx
+    int 0x80`}</pre>
           </div>
         </div>
 

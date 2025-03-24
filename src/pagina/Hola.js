@@ -1,5 +1,5 @@
 import React from 'react';
-import Particles from '../Backgrounds/Particles/Particles.tsx';
+import Aurora from '../Backgrounds/Aurora/Aurora.tsx';
 import './Global.css'
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
@@ -12,18 +12,13 @@ const Hola = () => {
       </Link>
 
       <div className="particles-container">
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
+        <Aurora
+                        colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+                        blend={1.0}
+                        amplitude={1.0}
+                        speed={0.5}
+                      />
       </div>
-
       <div className="content"
         style={{ position: 'relative' }}>
         <MorphingText texts={["Memoria", "Tecnica", "Hola", "ASM"]} />
@@ -38,14 +33,17 @@ const Hola = () => {
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-            <div className="glass-container">
-              <p className='Post-content'>Ensamblaje:
-                nasm -f elf32 hola.asm -o hola.o</p>
-              <p className='Post-content'>Enlazado:
-                ld -m elf_i386 hola.o -o hola</p>
-              <p className='Post-content'>Ejecución:
-                ./hola</p>
-            </div>
+            
+              <p className='Post-content'>Ensamblaje:</p>
+                <pre className='code-block'>
+                nasm -f elf32 hola.asm -o hola.o</pre>
+              <p className='Post-content'>Enlazado:</p>
+                <pre className='code-block'>ld -m elf_i386 hola.o -o hola
+              </pre>
+              <p className='Post-content'>Ejecución:</p>
+                <pre className='code-block'>
+                ./hola</pre>
+            
 
           </div>
         </div>
@@ -66,24 +64,26 @@ const Hola = () => {
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
-            <p className='Post-content'><span className='resaltado'>.data</span>: Sección para variables sin inicializar.
-              section .bss
-              buffer resb 10  ; Buffer para almacenar el número ingresado</p>
-            <p className='Post-content'><span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.
-              section .text
-              global _start
-              _start:
-              ; Mostrar mensaje
-              mov eax, 4       ; syscall sys_write
-              mov ebx, 1       ; stdout
-              mov ecx, mensaje ; Dirección del mensaje
-              mov edx, len     ; Longitud del mensaje
-              int 0x80         ; Llamado al sistema
+            <p className='Post-content'><span className='resaltado'>.data</span>: Sección para variables sin inicializar.</p>
+              <pre className='code-block'>
+                {`section .bss
+    buffer resb 10  ; Buffer para almacenar el número ingresado`}</pre>
+            <p className='Post-content'><span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.</p>
+              <pre className='code-block'>
+                {`section .text
+    global _start
+    _start:
+    ; Mostrar mensaje
+    mov eax, 4       ; syscall sys_write
+    mov ebx, 1       ; stdout
+    mov ecx, mensaje ; Dirección del mensaje
+    mov edx, len     ; Longitud del mensaje
+    int 0x80         ; Llamado al sistema
 
-              ; Salir del programa
-              mov eax, 1       ; syscall sys_exit
-              xor ebx, ebx     ; Código de salida 0
-              int 0x80         ; Llamado al sistema</p>
+    ; Salir del programa
+    mov eax, 1       ; syscall sys_exit
+    xor ebx, ebx     ; Código de salida 0
+    int 0x80         ; Llamado al sistema`}</pre>
           </div>
         </div>
 
