@@ -27,63 +27,51 @@ const SumaCiclo = () => {
         <MorphingText texts={["Memoria", "Tecnica", "Raiz", "ASM + GCC"]} />
         <div className="glass-container">
           <div className="content-left">
-            <h1 className="Post-title">Explicación del Código</h1>
-            <p className="Post-content">Este programa en ensamblador NASM para la arquitectura x86 de 32 bits realiza las siguientes operaciones:
-              Solicita al usuario que ingrese dos números.
-              Convierte los números ingresados de ASCII a valores numéricos.
-              Suma los dos números y almacena el resultado.
-              Muestra el resultado en pantalla.
-              Usa el resultado de la suma como un contador para imprimir el mensaje "Hello" repetidamente.
-              Finaliza la ejecución utilizando int 0x80.</p>
+            <h1 className="Post-title">Descripcion General</h1>
+            <p className="Post-content">Este programa en ensamblador (NASM) calcula la 
+              raíz cuadrada de un número flotante (en este caso, 25.0) utilizando la Unidad 
+              de Punto Flotante (FPU) y luego imprime el resultado en la consola. 
+              El programa utiliza la función printf de la biblioteca estándar de C para 
+              formatear y mostrar el resultado.</p>
           </div>
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
-            <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-
             <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-              {`nasm -f elf32 programa.asm -o programa.o`}
-            </pre>
-            <p className='Post-content'>Enlazado:</p>
+              {`nasm -f elf32 raiz.asm -o raiz.o`}
+            </pre><p className='Post-content'>
+            <p className="Post-content"><span className='resaltado'>nasm</span>: Ensamblador NASM.clear</p>
+            <p className="Post-content"><span className='resaltado'>-f elf32</span>: Especifica que el formato de salida es ELF de 32 bits.</p>
+            <p className="Post-content"><span className='resaltado'>raiz.asm</span>: Archivo de código fuente en ensamblador.</p>
+            <p className='Post-content'><span className='resaltado'>-o raiz o</span>:Archivo objeto de salida.</p>
+            </p>
+            <p className='Post-content'>Enlazado con GCC:</p>
             <pre className='code-block'>
-              {`ld -m elf_i386 programa.o -o programa`}</pre>
+              {`gcc -m32 raiz.o -o raiz -no-pie`}</pre>
+              <p className="Post-content"><span className='resaltado'>gcc</span>: Compilador de.</p>
+            <p className="Post-content"><span className='resaltado'>-m32</span>: Especifica que se debe generar un binario de 32 bits.</p>
+            <p className='Post-content'><span className='resaltado'>raiz o</span>:Archivo objeto generado en el paso anterior.</p>
+            <p className='Post-content'><span className='resaltado'>-o raiz</span>:Nombre del archivo ejecutable de salida.</p>
+            <p className='Post-content'><span className='resaltado'>-no pie</span>: Desactiva la generación de un ejecutable independiente de la posición (Position Independent Executable).</p>
             <p className='Post-content'>Ejecución:</p>
-            <pre className='code-block'> {`./programa`}</pre>
+            <pre className='code-block'> {`./raiz`}</pre>
 
 
-          </div>
-        </div>
-
-        <div className="glass-container">
-          <div className="content-right">
-            <h2 className="Sub-theme">Proceso de enlazado</h2>
-            <p className="Post-content">El proceso de enlazado toma el archivo objeto (programa.o) y lo convierte en
-              un ejecutable mediante el uso de ld con la opción -m elf_i386 para producir un binario de 32 bits.</p>
-            <p className="Post-content">
-              <span className="resaltado">mov</span>: Mueve datos entre registros o entre registros y memoria.</p>
-            <p className="Post-content"><span className='resaltado'>int 0x80</span>: Llama al sistema para realizar funciones como escribir (write), leer (read) o salir (exit).</p>
-            <p className="Post-content"><span className='resaltado'>resb</span>: Reserva bytes de memoria sin inicializar en la sección .bss.</p>
-            <p className="Post-content"><span className='resaltado'>db</span>: Define datos en la sección .data (en este caso, mensajes a imprimir).</p>
-            <p className='Post-content'><span className='resaltado'>loop</span>: Controla la repetición de la impresión del mensaje "Hello" según el resultado de la suma.</p>
-            <p className='Post-content'><span className='resaltado'>sub, add</span>: Realizan operaciones aritméticas y conversiones entre ASCII y números.</p>
           </div>
         </div>
 
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
-            <p className='Post-content'><span className='resaltado'>.bss</span>: Sección para variables sin inicializar que almacenan números y resultados.</p>
-            <pre className='code-block'>
-              {`section .bss
-    num1 resb 1
-    num2 resb 1
-    resultado resb 1`}
-            </pre>
-            <p className='Post-content'><span className='resaltado'>.data</span>: Sección para datos inicializados como mensajes y longitudes de mensajes.</p>
+            <p className='Post-content'><span className='resaltado'>.data</span>: Sección para variables sin inicializar que almacenan números y resultados.</p>
             <pre className='code-block'>
               {`section .data
-    msg db "Ingresa un número: ", 0
-    msg_result db "Número ingresado: ", 0
-    newline db 10, 0  ; Salto de línea`}
+    num dd 25.0             ; Número de entrada
+    fmt db "Raíz cuadrada: %lf", 10, 0  ; %lf para double`}
+            </pre>
+            <p className='Post-content'><span className='resaltado'>.bss</span>: Sección para datos inicializados como mensajes y longitudes de mensajes.</p>
+            <pre className='code-block'>
+              {`section .bss
+    res resq 1              ; Espacio para un número de 8 bytes (double)`}
             </pre>
             <div className="code-container">
               <p className='Post-content'>
@@ -91,81 +79,23 @@ const SumaCiclo = () => {
               </p>
               <pre className='code-block'>
                 {`section .text
-    global _start
+    global main
+    extern printf
 
-    _start:
-    ; Mostrar mensaje 1
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg1
-    mov edx, 26
-    int 0x80
+main:
+    finit                   ; Inicializar la FPU para "unidades de punto flotante"
+    fld dword [num]         ; Cargar el número en la FPU
+    fsqrt                   ; Calcular la raíz cuadrada
+    fstp qword [res]        ; Guardar el resultado en 64 bits
 
-    ; Leer primer número
-    mov eax, 3
-    mov ebx, 0
-    mov ecx, num1
-    mov edx, 2
-    int 0x80
+    push dword [res+4]      ; Parte alta del double
+    push dword [res]        ; Parte baja del double
+    push fmt
+    call printf
+    add esp, 12             ; Limpiar la pila
 
-    ; Mostrar mensaje 2
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg2
-    mov edx, 27
-    int 0x80
-
-    ; Leer segundo número
-    mov eax, 3
-    mov ebx, 0
-    mov ecx, num2
-    mov edx, 2
-    int 0x80
-
-    ; Convertir caracteres ASCII a números y sumar
-    mov al, [num1]  
-    sub al, '0'
-    mov bl, [num2]  
-    sub bl, '0'
-    add al, bl
-    mov [resultado], al
-
-    ; Mostrar mensaje del resultado
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg_result
-    mov edx, 11
-    int 0x80
-
-    ; Convertir resultado a ASCII y mostrar
-    mov al, [resultado]
-    add al, '0'
-    mov [resultado], al
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, resultado
-    mov edx, 1
-    int 0x80
-
-    ; Preparar el ciclo
-    movzx ecx, byte [resultado]  
-    sub ecx, '0'                 
-    jle .exit                    
-
-    .loop:
-    push ecx
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, hello
-    mov edx, hello_len
-    int 0x80
-    pop ecx
-    loop .loop
-
-    .exit:
-     mov eax, 1
-     xor ebx, ebx
-     int 0x80`}
+    xor eax, eax
+    ret`}
               </pre>
             </div>
           </div>
@@ -174,14 +104,16 @@ const SumaCiclo = () => {
 
         <div className='glass-container'>
           <div className='content-right'>
-            <h2 className='Sub-theme'>Observaciones</h2>
-            <p className='Post-content'>El programa convierte los números ingresados de ASCII a sus valores numéricos antes de realizar la suma.</p>
-            <p className='Post-content'>Utiliza la llamada al sistema sys_write para mostrar mensajes y resultados.</p>
-            <p className='Post-content'>Utiliza el resultado de la suma para imprimir el mensaje "Hello" repetidamente usando un bucle loop.</p>
-            <p className='Post-content'>Es compatible con sistemas operativos Linux que utilizan int 0x80 para llamadas al sistema.</p>
-            <h2 className='Sub-theme'>Errores Comunes</h2>
-            <p className='Post-content'>No realizar la conversión correcta de ASCII a números antes de realizar la suma.</p>
-            <p className='Post-content'>Intentar ingresar valores no numéricos, lo cual causará errores.</p>
+            <h2 className='Sub-theme'>Limitaciones</h2>
+            <p className='Post-content'>El programa está hardcodeado para calcular la 
+              raíz cuadrada de 25.0. Para calcular la raíz cuadrada de otros números, 
+              se debe modificar el valor de num en la sección .data.ection .text</p>
+            <p className='Post-content'>No maneja entradas dinámicas del usuario.</p>
+            <h2 className='Sub-theme'>Consideraciones</h2>
+            <p className='Post-content'>El programa está diseñado para sistemas de 32 bits.</p>
+            <p className='Post-content'>Depende de la función printf de la biblioteca estándar de C.</p>
+            <p className='Post-content'>El uso de -no-pie en el enlazado es necesario para evitar problemas con la generación de 
+              código independiente de la posición en sistemas modernos.</p>
           </div>
         </div>
 
