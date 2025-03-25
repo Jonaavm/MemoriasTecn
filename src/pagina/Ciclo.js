@@ -3,8 +3,14 @@ import './Global.css';
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
 import { MorphingText } from '../components/magicui/morphing-text.jsx';
+import { CodeBlock } from "../components/ui/code-block.jsx";
+
 
 const Ciclo = () => {
+  const handleCopy = () => {
+    navigator.clipboard.writeText(dummyCode);
+    alert("¡Código copiado al portapapeles!");
+  };
   return (
     <div className="page-container">
       <Link to="/">
@@ -13,11 +19,11 @@ const Ciclo = () => {
 
       <div className="particles-container">
         <Aurora
-                        colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
-                        blend={1.0}
-                        amplitude={1.0}
-                        speed={0.5}
-                      />
+          colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+          blend={1.0}
+          amplitude={1.0}
+          speed={0.5}
+        />
       </div>
 
       <div className="content"
@@ -34,18 +40,18 @@ const Ciclo = () => {
           </div>
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
-            <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en 
+            <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en
               x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-              <p className='Post-content'>Ensamblaje:</p>
-              <pre className='code-block'>
-                nasm -f elf32 ciclo.asm -o ciclo.o</pre>
-              <p className='Post-content'>Enlazado:</p>
-              <pre className='code-block'>
-                ld -m elf_i386 ciclo.o -o ciclo</pre>
-              <p className='Post-content'>Ejecución:</p>
-              <pre className='code-block'>
-                ./ciclo</pre>
-            
+            <p className='Post-content'>Ensamblaje:</p>
+            <pre className='code-block'>
+              nasm -f elf32 ciclo.asm -o ciclo.o</pre>
+            <p className='Post-content'>Enlazado:</p>
+            <pre className='code-block'>
+              ld -m elf_i386 ciclo.o -o ciclo</pre>
+            <p className='Post-content'>Ejecución:</p>
+            <pre className='code-block'>
+              ./ciclo</pre>
+
 
           </div>
         </div>
@@ -70,14 +76,14 @@ const Ciclo = () => {
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>
               .data</span>: </p>
-              <pre className='code-block'>
-                {`section .data
+            <pre className='code-block'>
+              {`section .data
     hello db "Hello", 10  ; Mensaje con salto de línea
     hello_len equ $ - hello
     N equ 10  ; Número de repeticiones`}</pre>
             <p className='Post-content'><span className='resaltado'>
               .text</span> ección para el código ejecutable del programa.</p>
-              <pre className='code-block'>
+            <pre className='code-block'>
               {`section .text
     global _start
     _start:
@@ -101,11 +107,11 @@ const Ciclo = () => {
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Observaciones</h2>
-            <p className='Post-content'>Este programa utiliza un bucle simple controlado 
+            <p className='Post-content'>Este programa utiliza un bucle simple controlado
               por el registro ecx para mostrar un mensaje repetidamente.</p>
             <p className='Post-content'>
-            Utiliza la llamada al sistema sys_write para mostrar el mensaje en pantalla.</p>
-            <p className='Post-content'>Es compatible con sistemas operativos Linux que 
+              Utiliza la llamada al sistema sys_write para mostrar el mensaje en pantalla.</p>
+            <p className='Post-content'>Es compatible con sistemas operativos Linux que
               utilizan int 0x80 para llamadas al sistema.</p>
             <h2 className='Sub-theme'>Errores Comunes</h2>
             <p className='Post-content'>No definir correctamente la longitud del mensaje (hello_len).</p>

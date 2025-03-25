@@ -4,7 +4,13 @@ import './Global.css'
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png';
 import { MorphingText } from '../components/magicui/morphing-text.jsx';
+import { CodeBlock } from "../components/ui/code-block.jsx";
+
 const Hola = () => {
+  const handleCopy = () => {
+    navigator.clipboard.writeText(dummyCode);
+    alert("¡Código copiado al portapapeles!");
+  };
   return (
     <div className="page-container">
       <Link to="/">
@@ -13,11 +19,11 @@ const Hola = () => {
 
       <div className="particles-container">
         <Aurora
-                        colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
-                        blend={1.0}
-                        amplitude={1.0}
-                        speed={0.5}
-                      />
+          colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+          blend={1.0}
+          amplitude={1.0}
+          speed={0.5}
+        />
       </div>
       <div className="content"
         style={{ position: 'relative' }}>
@@ -33,17 +39,17 @@ const Hola = () => {
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-            
-              <p className='Post-content'>Ensamblaje:</p>
-                <pre className='code-block'>
-                nasm -f elf32 hola.asm -o hola.o</pre>
-              <p className='Post-content'>Enlazado:</p>
-                <pre className='code-block'>ld -m elf_i386 hola.o -o hola
-              </pre>
-              <p className='Post-content'>Ejecución:</p>
-                <pre className='code-block'>
-                ./hola</pre>
-            
+
+            <p className='Post-content'>Ensamblaje:</p>
+            <pre className='code-block'>
+              nasm -f elf32 hola.asm -o hola.o</pre>
+            <p className='Post-content'>Enlazado:</p>
+            <pre className='code-block'>ld -m elf_i386 hola.o -o hola
+            </pre>
+            <p className='Post-content'>Ejecución:</p>
+            <pre className='code-block'>
+              ./hola</pre>
+
 
           </div>
         </div>
@@ -65,12 +71,12 @@ const Hola = () => {
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>.data</span>: Sección para variables sin inicializar.</p>
-              <pre className='code-block'>
-                {`section .bss
+            <pre className='code-block'>
+              {`section .bss
     buffer resb 10  ; Buffer para almacenar el número ingresado`}</pre>
             <p className='Post-content'><span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.</p>
-              <pre className='code-block'>
-                {`section .text
+            <pre className='code-block'>
+              {`section .text
     global _start
     _start:
     ; Mostrar mensaje
