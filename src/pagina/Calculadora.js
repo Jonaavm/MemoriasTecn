@@ -71,31 +71,46 @@ const Calculadora = () => {
             <p className='Post-content'><span className='resaltado'>mul y div</span>: Realizan operaciones aritméticas de multiplicación y división.</p>
           </div>
         </div>
-
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
-            <p className='Post-content'><span className='resaltado'>.data</span>: S: 
-            Contiene los mensajes mostrados al usuario y mensajes de error.</p>
-            <pre className='code-block'>
-              {`section .data
-    msg1 db "Ingresa el primer número: ", 0
-    msg2 db "Ingresa el segundo número: ", 0
-    msg_result db "El resultado es: ", 0
-    msg_error db "Operación no válida", 0`}</pre>
-            <p className='Post-content'><span className='resaltado'>.bss</span>: 
-            Almacena variables sin inicializar que contienen números ingresados y resultados.</p>
-            <pre className='code-block'>
-              {`section .bss
-    opcion resb 2
-    num1 resb 2
-    num2 resb 2
-    resultado resb 2`}</pre>
-            <p className='Post-content'><span className='resaltado'>.text</span> 
-            Contiene el código ejecutable del programa.</p>
-              <pre className='code-block'>
+            <p className='Post-content'><span className='resaltado'>.data</span>:     Contiene las variables inicializadas.
+            </p>
+            <CodeBlock laguage="bash"
+            code={`Sección .data:
+    num1: Primer número entero (500).
+    num2: Segundo número entero (10).
+    fmt: Cadena de formato para imprimir un entero (%d).`}
+            />
+            <p className='Post-content'><span className='resaltado'>.bss</span>: Reserva espacio para variables no inicializadas.</p>
+            <CodeBlock laguage="bash"
+            code=
+              {`res: Variable de 4 bytes para almacenar el resultado de la suma.`}
+            />
+            <div className="code-container">
+              <p className='Post-content'>
+                <span className='resaltado'>.text</span>: Contiene el código ejecutable del programa.</p>
+                <CodeBlock laguage="bash"
+            code=
                 {`section .text
-      global _start`}</pre>
+    global main
+    extern printf
+
+main:
+    mov eax, dword [num1]  ; Cargar num1 en eax
+    add eax, dword [num2]  ; Sumar num2
+    mov [res], eax         ; Guardar resultado
+
+    push dword [res]       ; Pasar el resultado a printf
+    push fmt
+    call printf
+    add esp, 8             ; Limpiar pila
+
+    xor eax, eax
+    ret
+`}
+              />
+            </div>
           </div>
         </div>
 

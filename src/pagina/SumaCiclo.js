@@ -114,9 +114,85 @@ const SumaCiclo = () => {
             <CodeBlock
               language="assembly"
               code={`section .data
-    msg db "Ingresa un número: ", 0
-    msg_result db "Número ingresado: ", 0
-    newline db 10, 0  ; Salto de línea`}
+    msg1 db "Ingresa el primer número?", 0
+    msg2 db "Ingresa el segundo número?", 0
+    msg_result db "La suma es: ", 0
+    newline db 10, 0
+    hello db "Hello", 10
+    hello_len equ $ - hello`}
+            />
+            <p className="Post-content">
+              <span className="resaltado">.text</span>: Sección para el código ejecutable del programa.
+            </p>
+            <CodeBlock
+              language="assembly"
+              code={`section .text
+    global _start
+_start:
+    ; Mostrar mensaje 1
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, msg1
+    mov edx, 26
+    int 0x80
+    ; Leer primer número
+    mov eax, 3
+    mov ebx, 0
+    mov ecx, num1
+    mov edx, 2
+    int 0x80
+    ; Mostrar mensaje 2
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, msg2
+    mov edx, 27
+    int 0x80
+    ; Leer segundo número
+    mov eax, 3
+    mov ebx, 0
+    mov ecx, num2
+    mov edx, 2
+    int 0x80
+    ; Convertir caracteres ASCII a números y sumar
+    mov al, [num1]  
+    sub al, '0'
+    mov bl, [num2]  
+    sub bl, '0'
+    add al, bl
+    mov [resultado], al
+    ; Mostrar mensaje del resultado
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, msg_result
+    mov edx, 11
+    int 0x80
+
+    ; Convertir resultado a ASCII y mostrar
+    mov al, [resultado]
+    add al, '0'
+    mov [resultado], al
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, resultado
+    mov edx, 1
+    int 0x80
+    ; Preparar el ciclo
+    movzx ecx, byte [resultado]  
+    sub ecx, '0'                 
+    jle .exit                    
+.loop:
+    push ecx
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, hello
+    mov edx, hello_len
+    int 0x80
+    pop ecx
+    loop .loop
+.exit:
+    mov eax, 1
+    xor ebx, ebx
+    int 0x80`}
             />
           </div>
         </div>

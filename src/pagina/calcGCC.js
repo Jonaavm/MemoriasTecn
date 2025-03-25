@@ -8,11 +8,13 @@ import { CodeBlock } from "../components/ui/code-block.jsx";
 
 
 const SumaCiclo = () => {
+
   const handleCopy = () => {
     navigator.clipboard.writeText(dummyCode);
     alert("¡Código copiado al portapapeles!");
   };
   return (
+
     <div className="page-container">
       <Link to="/">
         <img src={logo} className="App-logo" alt="logo.png" />
@@ -20,11 +22,11 @@ const SumaCiclo = () => {
 
       <div className="particles-container">
         <Aurora
-                  colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
-                  blend={1.0}
-                  amplitude={1.0}
-                  speed={0.5}
-                />
+          colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+          blend={1.0}
+          amplitude={1.0}
+          speed={0.5}
+        />
       </div>
 
       <div className="content"
@@ -33,27 +35,30 @@ const SumaCiclo = () => {
         <div className="glass-container">
           <div className="content-left">
             <h1 className="Post-title">Descripción General</h1>
-            <p className="Post-content">Este programa en ensamblador NASM para la 
-              arquitectura x86 de 32 bits permite al usuario realizar operaciones 
-              aritméticas básicas (suma, resta, multiplicación y división) utilizando 
+            <p className="Post-content">Este programa en ensamblador NASM para la
+              arquitectura x86 de 32 bits permite al usuario realizar operaciones
+              aritméticas básicas (suma, resta, multiplicación y división) utilizando
               funciones estándar de C (printf y scanf).El programa maneja adecuadamente errores de división por cero.</p>
           </div>
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
-            <p className='Post-content'>PEste programa se compila utilizando NASM y se enlaza con gcc debido al uso de 
+            <p className='Post-content'>Este programa se compila utilizando NASM y se enlaza con gcc debido al uso de
               funciones estándar de C (printf y scanf).</p>
-            
-              <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-                {`nasm -f elf32 calculadora.asm -o calculadora.o`}
-              </pre>
-              <p className='Post-content'>Enlazado:</p>
-                <pre className='code-block'>
-            {`gcc -m32 -o calculadora calculadora.o -nostartfiles`}</pre>
-              <p className='Post-content'>Ejecución:</p>
-                <pre className='code-block'> {`./calculadora`}</pre>
+
+            <p className='Post-content'>Ensamblaje:</p><CodeBlock laguage="bash"
+                  code=
+              {`nasm -f elf32 calculadora.asm -o calculadora.o`}
+            />
+            <p className='Post-content'>Enlazado:</p>
+            <CodeBlock laguage="bash"
+                  code=
+              {`gcc -m32 -o calculadora calculadora.o -nostartfiles`}/>
+            <p className='Post-content'>Ejecución:</p>
+            <CodeBlock laguage="bash"
+                  code= {`./calculadora`}/>
           </div>
         </div>
-        
+
 
         <div className="glass-container">
           <div className="content-right">
@@ -69,14 +74,21 @@ const SumaCiclo = () => {
             <p className='Post-content'><span className='resaltado'>sub, add</span>: Realizan operaciones aritméticas y conversiones entre ASCII y números.</p>
           </div>
         </div>
-
-        <div className='glass-container'>
-          <div className='content-right'>
-            <h2 className='Sub-theme'>Secciones del Código</h2>
-            <p className='Post-content'><span className='resaltado'>.bss</span>: 
-            Contiene mensajes y formatos utilizados para printf y scanf.</p>
-            <pre className='code-block'>
-              {`section .
+        
+            <div className='glass-container'>
+              <div className='content-right'>
+                <h2 className='Sub-theme'>Secciones del Código</h2>
+                <p className='Post-content'><span className='resaltado'>.data</span>: Contiene mensajes y formatos utilizados para printf y scanf.</p>
+                <CodeBlock laguage="bash"
+                  code={`Sección .data:
+    num1: Primer número entero (500).
+    num2: Segundo número entero (10).
+    fmt: Cadena de formato para imprimir un entero (%d).`}
+                />
+                <p className='Post-content'><span className='resaltado'>.bss</span>: Sección para variables sin inicializar que almacenan números y resultados.</p>
+                <CodeBlock laguage="bash"
+                  code=
+                  {`section .data
     prompt1 db "Ingrese el primer numero: ", 0
     prompt2 db "Ingrese el segundo numero: ", 0
     prompt3 db "Ingrese la operacion (+, -, *, /): ", 0
@@ -84,23 +96,13 @@ const SumaCiclo = () => {
     fmt_in_char db " %c", 0
     fmt_out db "Resultado: %d", 10, 0
     error_msg db "Error: Division por cero", 10, 0`}
-            </pre>
-            <p className='Post-content'><span className='resaltado'>.data</span>: 
-            Sección para variables sin inicializar que almacenan números y resultados.</p>
-            <pre className='code-block'>
-              {`section .bss
-    num1 resd 1
-    num2 resd 1
-    oper resb 1
-    result resd 1`}
-            </pre>
-            <div className="code-container">
-              <p className='Post-content'>
-                <span className='resaltado'>.text</span>: 
-                Sección para el código ejecutable del programa.
-              </p>
-              <pre className='code-block'>
-                {`section .text
+                />
+                <div className="code-container">
+                  <p className='Post-content'>
+                    <span className='resaltado'>.text</span>: Contiene el código ejecutable del programa.</p>
+                  <CodeBlock laguage="bash"
+                    code=
+                    {`section .text
     global main
     extern printf, scanf
 
@@ -188,13 +190,12 @@ guardar_resultado:
 fin:
     xor eax, eax
     ret
-`}
-              </pre>
+`} />
+                </div>
               </div>
-      
-          </div>
-        </div>
-
+            </div>
+          
+        
 
         <div className='glass-container'>
           <div className='content-right'>
@@ -208,10 +209,9 @@ fin:
             <p className='Post-content'>Intentar ingresar valores no numéricos, lo cual causará errores.</p>
           </div>
         </div>
-
-      </div>
-    </div>
+        </div>
+        </div>
   );
-}
+};
 
 export default SumaCiclo;

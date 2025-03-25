@@ -59,7 +59,8 @@ const SumaCiclo = () => {
             <p className='Post-content'><span className='resaltado'>-no pie</span>: Desactiva la generación de un ejecutable independiente de la posición (Position Independent Executable).</p>
 
             <p className='Post-content'>Ejecución:</p>
-            <pre className='code-block'> {`./suma`}</pre>
+            <CodeBlock laguage="bash"
+            code={`./suma`}/>
 
 
           </div>
@@ -70,20 +71,22 @@ const SumaCiclo = () => {
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>.data</span>:     Contiene las variables inicializadas.
             </p>
-            <pre className='code-block'>
-              {`Sección .data:
+            <CodeBlock laguage="bash"
+            code={`Sección .data:
     num1: Primer número entero (500).
     num2: Segundo número entero (10).
     fmt: Cadena de formato para imprimir un entero (%d).`}
-            </pre>
+            />
             <p className='Post-content'><span className='resaltado'>.bss</span>: Reserva espacio para variables no inicializadas.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+            code=
               {`res: Variable de 4 bytes para almacenar el resultado de la suma.`}
-            </pre>
+            />
             <div className="code-container">
               <p className='Post-content'>
                 <span className='resaltado'>.text</span>: Contiene el código ejecutable del programa.</p>
-              <pre className='code-block'>
+                <CodeBlock laguage="bash"
+            code=
                 {`section .text
     global main
     extern printf
@@ -101,7 +104,7 @@ main:
     xor eax, eax
     ret
 `}
-              </pre>
+              />
             </div>
           </div>
         </div>
