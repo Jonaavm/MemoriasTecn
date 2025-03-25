@@ -41,14 +41,15 @@ const Hola = () => {
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
 
             <p className='Post-content'>Ensamblaje:</p>
-            <pre className='code-block'>
-              nasm -f elf32 hola.asm -o hola.o</pre>
+            <CodeBlock laguage="bash"
+              code={'nasm -f elf32 hola.asm -o hola.o'} />
             <p className='Post-content'>Enlazado:</p>
-            <pre className='code-block'>ld -m elf_i386 hola.o -o hola
-            </pre>
+            <CodeBlock laguage="bash"
+              code={'ld -m elf_i386 hola.o -o hola'}
+            />
             <p className='Post-content'>Ejecución:</p>
-            <pre className='code-block'>
-              ./hola</pre>
+            <CodeBlock laguage="bash"
+              code={'./hola'} />
 
 
           </div>
@@ -70,15 +71,19 @@ const Hola = () => {
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
-            <p className='Post-content'><span className='resaltado'>.data</span>: Sección para variables sin inicializar.</p>
-            <pre className='code-block'>
+            <p className='Post-content'><span className='resaltado'>.data</span>: Sección para datos inicializados como mensajes y longitudes de mensajes.</p>
+            <CodeBlock laguage="bash"
+              code=
               {`section .bss
-    buffer resb 10  ; Buffer para almacenar el número ingresado`}</pre>
+    buffer resb 10  ; Buffer para almacenar el número ingresadosection .data
+    mensaje db "Hola, mundo!", 0xA  ; Mensaje con salto de línea
+    len equ $ - mensaje  ; Longitud del mensaje`} />
             <p className='Post-content'><span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .text
     global _start
-    _start:
+_start:
     ; Mostrar mensaje
     mov eax, 4       ; syscall sys_write
     mov ebx, 1       ; stdout
@@ -89,7 +94,7 @@ const Hola = () => {
     ; Salir del programa
     mov eax, 1       ; syscall sys_exit
     xor ebx, ebx     ; Código de salida 0
-    int 0x80         ; Llamado al sistema`}</pre>
+    int 0x80         ; Llamado al sistema`} />
           </div>
         </div>
 

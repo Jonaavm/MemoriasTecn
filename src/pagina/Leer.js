@@ -46,14 +46,11 @@ const Leer = () => {
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
             
               <p className='Post-content'>Ensamblaje:</p>
-              <pre className='code-block'>
-                nasm -f elf32 leer.asm -o leer.o</pre>
+              <CodeBlock laguage="bash"code={'nasm -f elf32 leer.asm -o leer.o'}/>
               <p className='Post-content'>Enlazado:</p>
-              <pre className='code-block'>
-                ld -m elf_i386 leer.o -o leer</pre>
+              <CodeBlock laguage="bash"code={'ld -m elf_i386 leer.o -o leer'}/>
               <p className='Post-content'>Ejecución:</p>
-              <pre className='code-block'>
-                ./leer</pre>
+              <CodeBlock laguage="bash"code={'/leer'}/>
             
 
           </div>
@@ -78,26 +75,27 @@ const Leer = () => {
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>.bss</span>: 
             Sección para variables sin inicializar.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .bss
-    buffer resb 10  ; Buffer para almacenar el número ingresado`}</pre>
+    buffer resb 10  ; Buffer para almacenar el número ingresado`}/>
             <p className='Post-content'><span className='resaltado'>.data</span>: 
             Sección para datos inicializados como mensajes y saltos de línea.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .data
     msg db "Ingresa un número: ", 0
     msg_result db "Número ingresado: ", 0
-    newline db 10, 0  ; Salto de línea`}</pre>
+    newline db 10, 0  ; Salto de línea`}/>
             <p className='Post-content'><span className='resaltado'>.text</span>
             Contiene el código ejecutable del programa.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .text
-    global _start`}</pre>
+    global _start`}/>
           </div>
         </div>
         
-
-
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Observaciones</h2>

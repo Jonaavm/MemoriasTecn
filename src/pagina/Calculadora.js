@@ -43,12 +43,15 @@ const Calculadora = () => {
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
-            <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-              nasm -f elf32 calculadora.asm -o calculadora.o</pre>
-            <p className='Post-content'>Enlazado:</p><pre className='code-block'>
-              ld -m elf_i386 calculadora.o -o calculadora</pre>
+            <p className='Post-content'>Ensamblaje:</p>
+            <CodeBlock laguage="bash"
+              code={'nasm -f elf32 calculadora.asm -o calculadora.o'}/>
+            <p className='Post-content'>Enlazado:</p>
+            <CodeBlock laguage="bash"
+              code={' ld -m elf_i386 calculadora.o -o calculadora'}/>
             <p className='Post-content'>Ejecución:</p>
-              <pre className='code-block'>./calculadora</pre>
+            <CodeBlock laguage="bash"
+              code={'/calculadora'} />
 
 
           </div>
@@ -77,21 +80,21 @@ const Calculadora = () => {
             <p className='Post-content'><span className='resaltado'>.data</span>:     Contiene las variables inicializadas.
             </p>
             <CodeBlock laguage="bash"
-            code={`Sección .data:
+              code={`Sección .data:
     num1: Primer número entero (500).
     num2: Segundo número entero (10).
     fmt: Cadena de formato para imprimir un entero (%d).`}
             />
             <p className='Post-content'><span className='resaltado'>.bss</span>: Reserva espacio para variables no inicializadas.</p>
             <CodeBlock laguage="bash"
-            code=
+              code=
               {`res: Variable de 4 bytes para almacenar el resultado de la suma.`}
             />
             <div className="code-container">
               <p className='Post-content'>
                 <span className='resaltado'>.text</span>: Contiene el código ejecutable del programa.</p>
-                <CodeBlock laguage="bash"
-            code=
+              <CodeBlock laguage="bash"
+                code=
                 {`section .text
     global main
     extern printf

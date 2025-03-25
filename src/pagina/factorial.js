@@ -21,11 +21,11 @@ const SumaCiclo = () => {
 
       <div className="particles-container">
         <Aurora
-                  colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
-                  blend={1.0}
-                  amplitude={1.0}
-                  speed={0.5}
-                />
+          colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
+          blend={1.0}
+          amplitude={1.0}
+          speed={0.5}
+        />
       </div>
 
       <div className="content"
@@ -34,23 +34,26 @@ const SumaCiclo = () => {
         <div className="glass-container">
           <div className="content-left">
             <h1 className="Post-title">Descripcion General</h1>
-            <p className="Post-content">Este programa en ensamblador NASM para la arquitectura x86 de 32 bits 
-              calcula el factorial de un número entero almacenado en 
+            <p className="Post-content">Este programa en ensamblador NASM para la arquitectura x86 de 32 bits
+              calcula el factorial de un número entero almacenado en
               la sección .data. El resultado se muestra en pantalla utilizando la función printf de la biblioteca estándar de C.</p>
           </div>
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Este programa se compila utilizando NASM y se enlaza con gcc debido al uso de printf:</p>
-            
-              <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-                {`nasm -f elf32 factorial.asm -o factorial.o`}
-              </pre>
-              <p className='Post-content'>Enlazado:</p>
-                <pre className='code-block'>
-            {`gcc -m32 -o factorial factorial.o -no-pie`}</pre>
-              <p className='Post-content'>Ejecución:</p>
-                <pre className='code-block'> {`./factorial`}</pre>
-            
+
+            <p className='Post-content'>Ensamblaje:</p><CodeBlock laguage="bash"
+              code=
+              {`nasm -f elf32 factorial.asm -o factorial.o`}
+            />
+            <p className='Post-content'>Enlazado:</p>
+            <CodeBlock laguage="bash"
+              code=
+              {`gcc -m32 -o factorial factorial.o -no-pie`} />
+            <p className='Post-content'>Ejecución:</p>
+            <CodeBlock laguage="bash"
+              code={`./factorial`} />
+
 
           </div>
         </div>
@@ -71,21 +74,24 @@ const SumaCiclo = () => {
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>.data</span>: Contiene el número del cual se desea calcular el factorial y el mensaje de salida.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .data
     num dd 5
     fmt db "Factorial: %d", 10, 0`}
-            </pre>
+            />
             <p className='Post-content'><span className='resaltado'>.bss</span>: Espacio reservado para almacenar el resultado.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .bss
     res resb 4`}
-            </pre>
+            />
             <div className="code-container">
               <p className='Post-content'>
                 <span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.
               </p>
-              <pre className='code-block'>
+              <CodeBlock laguage="bash"
+                code=
                 {`section .text
     global main
     extern printf
@@ -107,7 +113,7 @@ end_loop:
     add esp, 8
     xor eax, eax
     ret`}
-              </pre>
+              />
             </div>
           </div>
         </div>

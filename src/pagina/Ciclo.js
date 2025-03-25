@@ -43,15 +43,13 @@ const Ciclo = () => {
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en
               x86 de 32 bits, se deben seguir los siguientes pasos:</p>
             <p className='Post-content'>Ensamblaje:</p>
-            <pre className='code-block'>
-              nasm -f elf32 ciclo.asm -o ciclo.o</pre>
+            <CodeBlock laguage="bash"code={'nasm -f elf32 ciclo.asm -o ciclo.o'}/>
             <p className='Post-content'>Enlazado:</p>
-            <pre className='code-block'>
-              ld -m elf_i386 ciclo.o -o ciclo</pre>
+            <CodeBlock laguage="bash"
+              code={'ld -m elf_i386 ciclo.o -o ciclo'}/>
             <p className='Post-content'>Ejecución:</p>
-            <pre className='code-block'>
-              ./ciclo</pre>
-
+            <CodeBlock laguage="bash"
+              code={'./ciclo'} />
 
           </div>
         </div>
@@ -76,14 +74,16 @@ const Ciclo = () => {
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>
               .data</span>: </p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .data
     hello db "Hello", 10  ; Mensaje con salto de línea
     hello_len equ $ - hello
-    N equ 10  ; Número de repeticiones`}</pre>
+    N equ 10  ; Número de repeticiones`} />
             <p className='Post-content'><span className='resaltado'>
-              .text</span> ección para el código ejecutable del programa.</p>
-            <pre className='code-block'>
+              .text</span> Ejección para el código ejecutable del programa.</p>
+            <CodeBlock laguage="bash"
+              code=
               {`section .text
     global _start
     _start:
@@ -99,7 +99,7 @@ const Ciclo = () => {
     loop .loop
     mov eax, 1
     xor ebx, ebx
-    int 0x80`}</pre>
+    int 0x80`} />
           </div>
         </div>
 

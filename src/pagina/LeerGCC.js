@@ -33,39 +33,41 @@ const SumaCiclo = () => {
         <div className="glass-container">
           <div className="content-left">
             <h1 className="Post-title">Descripcion General</h1>
-            <p className="Post-content">Este programa en ensamblador NASM para la 
-              arquitectura x86 de 32 bits permite al usuario ingresar un número entero 
+            <p className="Post-content">Este programa en ensamblador NASM para la
+              arquitectura x86 de 32 bits permite al usuario ingresar un número entero
               desde la consola y luego muestra dicho número en pantalla utilizando las funciones estándar printf y scanf.</p>
           </div>
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Este programa se compila utilizando NASM y se enlaza con gcc debido al uso de printf y scanf:</p>
 
-            <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-              {`nasm -f elf32 leer.asm -o leer.o`}
-            </pre>
+            <p className='Post-content'>Ensamblaje:</p><CodeBlock laguage="bash"
+              code={`nasm -f elf32 leer.asm -o leer.o`}
+            />
             <p className='Post-content'>Enlazado:</p>
-            <pre className='code-block'>
-              {`gcc -m32 leer.o -o leer -no-pie`}</pre>
+            <CodeBlock laguage="bash"
+              code={`gcc -m32 leer.o -o leer -no-pie`} />
             <p className='Post-content'>Ejecución:</p>
-            <pre className='code-block'> {`./leer`}</pre>
+            <CodeBlock laguage="bash"
+              code={`./leer`} />
 
 
           </div>
         </div>
 
-        
+
 
         <div className='glass-container'>
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>.data</span>: Contiene los mensajes que se mostrarán y los formatos para scanf y printf.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .data
     prompt db "Ingrese un valor: ", 0
     fmt_in db "%d", 0
     fmt_out db "Valor ingresado: %d", 10, 0`}
-            </pre>
+            />
             <p className='Post-content'><span className='resaltado'>.data</span>: Espacio reservado para almacenar el número ingresado.</p>
             <pre className='code-block'>
               {`num resd 1
