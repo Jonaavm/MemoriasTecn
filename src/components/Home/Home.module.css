@@ -1,0 +1,96 @@
+.App {
+  position: relative;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.auroraBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+.focusCardsContainer {
+  padding: 2rem;
+  margin-top: 2rem;
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.App-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  width: 100px;
+  animation: App-logo-spin infinite 20s linear;
+}
+
+.titleContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  text-align: center;
+  padding: 50px;
+  z-index: 100;
+  transition: all 0.5s ease;
+  font-size: 80px;
+  font-family: monospace;
+}
+
+.titleContainer.hidden {
+  opacity: 0;
+  transform: translate(-50%, -60%);
+}
+
+.informationSection {
+  margin-top: 100vh; /* Coloca la sección de información después del título */
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.glass-info-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  width: 100%;
+  padding: 40px;
+}
+
+.cardContainer {
+  margin-top: 50px; /* Añade un margen entre la sección de información y las tarjetas */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 40px;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .cardContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.titleContainer h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+/* Contenedor de cards */
+.cardsWrapper {
+  padding-top: 150px; /* Espacio para el título */
+  padding-bottom: 50px;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}

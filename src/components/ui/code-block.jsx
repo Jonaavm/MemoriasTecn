@@ -35,7 +35,7 @@ export const CodeBlock = ({
 
   return (
     <div className="relative w-full rounded-lg bg-slate-900 p-4 font-mono text-sm">
-      {/* Botón de copiar - Siempre visible en esquina superior derecha */}
+      
       <button
         onClick={copyToClipboard}
         className="absolute top-3 right-3 z-10 flex items-center gap-1 p-1.5 rounded bg-slate-700 hover:bg-slate-600 transition-colors"
