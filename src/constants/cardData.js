@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from '../imagenes/logo.png'; // Importación directa del logo
+import logo from '../imagenes/logo.png'; 
 
-// Importación directa de todas las imágenes (método más fiable)
 import p1 from '../imagenes/p1.png';
 import p2 from '../imagenes/p2.png';
 import p3 from '../imagenes/p3.png';
@@ -33,96 +32,96 @@ export const cardData = [
     altText: 'Calculadora',
     captionText: 'Memoria Tecnica',
     description: 'Calculadora Aritmética',
-    colorFrom: 'rgba(255, 0, 0, 0.3)',
-    colorTo: 'rgba(255, 165, 0, 0.3)'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/hola',
     imageSrc: p3,
     altText: 'Hola',
     description: 'Hola ASM',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/leer',
     imageSrc: p4,
     altText: 'Leer',
     description: 'Lectura de Datos',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/ciclo',
     imageSrc: p5,
     altText: 'Ciclo',
     description: 'Estructuras de Control',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/suma-ciclo',
     imageSrc: p6,
     altText: 'SumaCiclo',
     description: 'Suma con Iteración',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/calcGC',
     imageSrc: p7,
     altText: 'CalculadoraGCC',
     description: 'Calculadora Avanzada',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/par',
     imageSrc: p8,
     altText: 'Par',
     description: 'Números Pares',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/piramide',
     imageSrc: p9,
     altText: 'Piramide',
     description: 'Patrón Piramidal',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/factor',
     imageSrc: p10,
     altText: 'Factor',
     description: 'Cálculo Factorial',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/raiz',
     imageSrc: p11,
     altText: 'Raiz',
     description: 'Raíz Cuadrada',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/leerGcc',
     imageSrc: p12,
     altText: 'LeerGcc',
     description: 'Lectura con GCC',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   },
   {
     path: '/sumagcc',
     imageSrc: p13,
     altText: 'SumaGcc',
     description: 'Suma con GCC',
-    colorFrom: '#FF0000',
-    colorTo: '#FFA500'
+    colorFrom: 'rgba(0, 0, 255, 0.3)',
+    colorTo: 'rgba(110, 2, 140, 0.3)'
   }
 
 ];

@@ -12,6 +12,7 @@
   height: 100vh;
   z-index: -1;
 }
+
 .focusCardsContainer {
   padding: 2rem;
   margin-top: 2rem;
@@ -19,6 +20,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .App-logo {
   position: fixed;
   top: 20px;
@@ -48,7 +50,7 @@
 }
 
 .informationSection {
-  margin-top: 100vh; /* Coloca la sección de información después del título */
+  margin-top: 100vh; 
   padding: 0 20px;
   display: flex;
   justify-content: center;
@@ -67,7 +69,7 @@
 }
 
 .cardContainer {
-  margin-top: 50px; /* Añade un margen entre la sección de información y las tarjetas */
+  margin-top: 50px; 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -80,17 +82,39 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 .titleContainer h1 {
   font-size: 3rem;
   margin: 0;
 }
 
-/* Contenedor de cards */
 .cardsWrapper {
-  padding-top: 150px; /* Espacio para el título */
-  padding-bottom: 50px;
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
+  position: relative; 
+  margin-top: 100vh; 
+  /* CAMBIO 1: Centrar el contenedor */
+  display: grid; /* Cambiado de flex a grid para que coincida con el layout de las tarjetas */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta las columnas automáticamente */
+  gap: 20px; /* Espacio entre las tarjetas */
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  width: 100%; /* Se adapta al contenido */
+  margin-left: auto; /* Centra horizontalmente */
+  margin-right: auto; /* Centra horizontalmente */
+  padding: 20px;
+  z-index: 1; 
+}
+
+.cardsWrapper img {
+  max-width: 100%; /* Evita desbordamiento */
+  width: 300px; /* Ancho fijo de las imágenes */
+  height: auto; /* Proporción mantenida */
+  transition: transform 0.5s ease;
+}
+
+.cardsWrapper .card:hover img {
+  transform: scale(1.05);
+}
+
+.cardsWrapper .card {
+  width: 300px; /* Igualar al ancho de la imagen */
+  height: auto; /* Altura automática */
 }

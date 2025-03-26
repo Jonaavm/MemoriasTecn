@@ -8,11 +8,16 @@ import logo from '../../imagenes/logo.png';
 
 const Home = () => {
   const [showTitle, setShowTitle] = useState(true);
+  const [showCards, setShowCards] = useState(false); // Nuevo estado para las tarjetas
   const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const handleScroll = () => setShowTitle(window.scrollY <= 50);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setShowTitle(scrollY <= 50); // Ocultar título después de 50px
+      setShowCards(scrollY > 100); // Mostrar tarjetas después de 100px
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -44,7 +49,7 @@ const Home = () => {
       )}
 
       {/* Contenedor de las Cards */}
-      <div className={styles.cardsWrapper}>
+      <div className={`${styles.cardsWrapper} ${showCards ? styles.visible : styles.hidden}`}>
         <FocusCards 
           cards={focusCardsData} 
           onCardClick={handleCardClick} 
