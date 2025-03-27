@@ -198,15 +198,15 @@ const Home = () => {
             </ul>
           </div>
           <div
-          className={styles.glassContainer}
-          data-aos="flip-up"
-          data-aos-delay="600"
-        >
-          <h1 className={styles.postTitle}>Codigos NASM</h1>
+            className={styles.glassContainer}
+            data-aos="flip-up"
+            data-aos-delay="600"
+          >
+            <h1 className={styles.postTitle}>Codigos NASM</h1>
+          </div>
         </div>
-        </div>
-    
-        
+
+
 
         <div
           className={`${styles.cardsWrapper} ${showCards ? styles.visible : styles.hidden}`}

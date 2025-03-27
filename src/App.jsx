@@ -13,7 +13,7 @@ import SumaGcc from './pagina/SumaGcc';
 import Piramide from './pagina/Piramide';
 import Factorial from './pagina/factorial';
 import Raiz from './pagina/Raiz';
-
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 const Calculadora = lazy(() => import('./pagina/Calculadora'));
 const Suma = lazy(() => import('./pagina/Suma'));
 
@@ -22,6 +22,10 @@ function App() {
     
     <Router>
       <ScrollToTop />
+      <div className='app-container' style={{
+        maxWidth:'100vw',
+        overflowX: 'hidden'
+      }}>
       <Suspense fallback={<div>Cargando...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -40,6 +44,7 @@ function App() {
           <Route path="/raiz" element={<Raiz />} />
         </Routes>
       </Suspense>
+      </div>
     </Router>
   );
 }

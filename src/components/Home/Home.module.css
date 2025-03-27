@@ -176,3 +176,47 @@
   border-radius: 8px;
   display: block;
 }
+/* Mobile First (default) */
+.appContainer {
+  padding: 10px;
+}
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .appContainer {
+    padding: 20px;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .appContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+/* Mobile */
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Tablet + Desktop */
+@media (min-width: 768px) {
+  .gridContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: calc(33.33% - 20px);
+  }
+}
