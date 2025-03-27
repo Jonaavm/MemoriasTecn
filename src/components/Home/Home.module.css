@@ -13,14 +13,6 @@
   z-index: -1;
 }
 
-.focusCardsContainer {
-  padding: 2rem;
-  margin-top: 2rem;
-  max-width: 1800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .App-logo {
   position: fixed;
   top: 20px;
@@ -37,11 +29,20 @@
   transform: translate(-50%, -50%);
   color: #ffffff;
   text-align: center;
-  padding: 50px;
+  padding: 40px; /* Reducido para más espacio */
   z-index: 100;
   transition: all 0.5s ease;
-  font-size: 80px;
   font-family: monospace;
+  width: 90%; /* Asegura que no se salga en móviles */
+  max-width: 1200px; /* Límite máximo */
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .titleContainer {
+    font-size: 2rem; /* Tamaño base para móviles */
+    padding: 20px;
+  }
 }
 
 .titleContainer.hidden {
@@ -49,72 +50,129 @@
   transform: translate(-50%, -60%);
 }
 
-.informationSection {
-  margin-top: 100vh; 
+.mainContent {
+  position: relative;
+  margin-top: 100vh;
   padding: 0 20px;
-  display: flex;
-  justify-content: center;
 }
 
-.glass-info-container {
+.content {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.glassContainer {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-  width: 100%;
-  padding: 40px;
 }
 
-.cardContainer {
-  margin-top: 50px; 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 40px;
-  justify-items: center;
+.postTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-@media (min-width: 768px) {
-  .cardContainer {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.postContent {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
-.titleContainer h1 {
-  font-size: 3rem;
-  margin: 0;
+.resaltado {
+  color: #00BFFF;
+  font-weight: bold;
 }
 
+.imageGallery {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.image {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.subTheme {
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 30px 0 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 5px;
+}
+
+.codeContainer {
+  margin: 15px 0;
+  border-left: 4px solid #00BFFF;
+  padding-left: 10px;
+}
+
+.codeBlock {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  color: #f0f0f0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+
+.keyword {
+  color: #ff79c6;
+}
+
+.register {
+  color: #8be9fd;
+}
+
+.comment {
+  color: #6272a4;
+}
+
+.postContent a {
+  color: #00BFFF;
+  text-decoration: none;
+}
+
+.postContent a:hover {
+  text-decoration: underline;
+}
 .cardsWrapper {
-  position: relative; 
-  margin-top: 100vh; 
-  /* CAMBIO 1: Centrar el contenedor */
-  display: grid; /* Cambiado de flex a grid para que coincida con el layout de las tarjetas */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta las columnas automáticamente */
-  gap: 20px; /* Espacio entre las tarjetas */
-  max-width: 1200px; /* Ancho máximo del contenedor */
-  width: 100%; /* Se adapta al contenido */
-  margin-left: auto; /* Centra horizontalmente */
-  margin-right: auto; /* Centra horizontalmente */
+  max-width: 1400px; /* Aumentado para pantallas grandes */
+  margin: 0 auto;
   padding: 20px;
-  z-index: 1; 
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.cardsWrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .cardsWrapper img {
-  max-width: 100%; /* Evita desbordamiento */
-  width: 300px; /* Ancho fijo de las imágenes */
-  height: auto; /* Proporción mantenida */
-  transition: transform 0.5s ease;
-}
-
-.cardsWrapper .card:hover img {
-  transform: scale(1.05);
-}
-
-.cardsWrapper .card {
-  width: 300px; /* Igualar al ancho de la imagen */
-  height: auto; /* Altura automática */
+  width: 100%; /* Ocupa todo el ancho de la tarjeta */
+  height: auto; /* Mantiene la proporción original */
+  max-height: 450px; /* Aumentado para que las imágenes no sean tan pequeñas */
+  object-fit: contain; /* Muestra la imagen completa sin recortarla */
+  border-radius: 8px;
+  display: block;
 }

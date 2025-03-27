@@ -34,23 +34,26 @@ const SumaCiclo = () => {
         <div className="glass-container">
           <div className="content-left">
             <h1 className="Post-title">Descripción General</h1>
-            <p className="Post-content">EEste programa en ensamblador NASM para la 
-              arquitectura x86 de 32 bits verifica si un número entero es par o impar 
-              utilizando la operación test y muestra un mensaje en pantalla 
+            <p className="Post-content">EEste programa en ensamblador NASM para la
+              arquitectura x86 de 32 bits verifica si un número entero es par o impar
+              utilizando la operación test y muestra un mensaje en pantalla
               indicando el resultado. Usa la función printf para mostrar mensajes.</p>
           </div>
           <div className="content-right">
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Este programa se compila utilizando NASM y se enlaza con gcc debido al uso de printf.</p>
 
-            <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
+            <p className='Post-content'>Ensamblaje:</p><CodeBlock laguage="bash"
+              code=
               {`nasm -f elf32 es_par.asm -o es_par.o`}
-            </pre>
+            />
             <p className='Post-content'>Enlazado:</p>
-            <pre className='code-block'>
-              {`gcc -m32 es_par.o -o es_par -no-pie`}</pre>
+            <CodeBlock laguage="bash"
+              code=
+              {`gcc -m32 es_par.o -o es_par -no-pie`} />
             <p className='Post-content'>Ejecución:</p>
-            <pre className='code-block'> {`./par`}</pre>
+            <CodeBlock laguage="bash"
+              code={`./par`} />
 
 
           </div>
@@ -72,14 +75,15 @@ const SumaCiclo = () => {
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>.data</span>: Contiene mensajes y el número a evaluar.</p>
-            <pre className='code-block'>
-              {`section .data
+            <CodeBlock laguage="bash"
+              code={`section .data
     num dd 10
     par db "El número es par", 10, 0
     inpar db "El número es impar", 10, 0`}
-            </pre>
+            />
             <p className='Post-content'><span className='resaltado'>.data</span>: Código ejecutable que realiza la verificación.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .text
     global main
     extern printf
@@ -98,8 +102,8 @@ print_par:
 end_programa:
     xor eax, eax
     ret`}
-            </pre>
-            
+            />
+
           </div>
         </div>
 

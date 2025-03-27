@@ -34,30 +34,33 @@ const SumaCiclo = () => {
         <div className="glass-container">
           <div className="content-left">
             <h1 className="Post-title">Descripcion General</h1>
-            <p className="Post-content">Este programa en ensamblador (NASM) solicita al 
-              usuario un número de filas y luego genera una pirámide de asteriscos en la 
-              consola. El programa utiliza llamadas a funciones de la biblioteca estándar 
+            <p className="Post-content">Este programa en ensamblador (NASM) solicita al
+              usuario un número de filas y luego genera una pirámide de asteriscos en la
+              consola. El programa utiliza llamadas a funciones de la biblioteca estándar
               de C (printf y scanf) para manejar la entrada y salida de datos.</p>
           </div>
           <div className="content-right">
-            <h2 className='Post-content'>Compilación y Ejecución</h2>
-            <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
+            <h2 className='Sub-theme'>Compilación y Ejecución</h2>
+            <p className='Post-content'>Ensamblaje:</p><CodeBlock laguage="bash"
+              code=
               {`nasm -f elf32 piramide.asm -o piramide.o`}
-            </pre>
+            />
             <p className="Post-content"><span className='resaltado'>nasm</span>: Ensamblador NASM.clear</p>
             <p className="Post-content"><span className='resaltado'>-f elf32</span>: Especifica que el formato de salida es ELF de 32 bits.</p>
             <p className="Post-content"><span className='resaltado'>piramide.asm</span>: Archivo de código fuente en ensamblador.</p>
             <p className='Post-content'><span className='resaltado'>-o piramide o</span>:Archivo objeto de salida.</p>
             <p className='Post-content'>Enlazado con GCC:</p>
-            <pre className='code-block'>
-              {`gcc -m32 piramide.o -o piramide -no-pie`}</pre>
-              <p className="Post-content"><span className='resaltado'>gcc</span>: Compilador de.</p>
+            <CodeBlock laguage="bash"
+              code=
+              {`gcc -m32 piramide.o -o piramide -no-pie`} />
+            <p className="Post-content"><span className='resaltado'>gcc</span>: Compilador de.</p>
             <p className="Post-content"><span className='resaltado'>-m32</span>: Especifica que se debe generar un binario de 32 bits.</p>
             <p className='Post-content'><span className='resaltado'>piramide o</span>:Archivo objeto generado en el paso anterior.</p>
             <p className='Post-content'><span className='resaltado'>-o piramide</span>:Nombre del archivo ejecutable de salida.</p>
             <p className='Post-content'><span className='resaltado'>-no pie</span>: Desactiva la generación de un ejecutable independiente de la posición (Position Independent Executable).</p>
             <p className='Post-content'>Ejecución:</p>
-            <pre className='code-block'> {`./piramide`}</pre>
+            <CodeBlock laguage="bash"
+              code={`./piramide`} />
 
 
           </div>
@@ -67,7 +70,8 @@ const SumaCiclo = () => {
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>.data</span>: Contiene las cadenas de texto y formatos utilizados para la entrada y salida.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`Sección .data:
     Contiene las cadenas de texto y formatos utilizados para la entrada y salida.
     prompt: Mensaje para solicitar el número de filas.
@@ -76,17 +80,19 @@ const SumaCiclo = () => {
     newline: Salto de línea (\n).
     space: Espacio en blanco ( ).
     asterisk: Asterisco (*).`}
-            </pre>
+            />
             <p className='Post-content'><span className='resaltado'>.bss</span>: Sección para datos inicializados.</p>
-            <pre className='code-block'>
+            <CodeBlock laguage="bash"
+              code=
               {`section .bss
     filas: Variable para almacenar el número de filas ingresado por el usuario.`}
-            </pre>
+            />
             <div className="code-container">
               <p className='Post-content'>
                 <span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.
               </p>
-              <pre className='code-block'>
+              <CodeBlock laguage="bash"
+                code=
                 {`ssection .text
     global main
     extern printf, scanf
@@ -146,7 +152,7 @@ nueva_linea:
 
     xor eax, eax
     ret`}
-              </pre>
+              />
             </div>
           </div>
         </div>

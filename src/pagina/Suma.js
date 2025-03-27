@@ -46,14 +46,16 @@ const SumaCiclo = () => {
             <h2 className='Sub-theme'>Compilación y Ejecución</h2>
             <p className='Post-content'>Para compilar y ejecutar el código ensamblador NASM en x86 de 32 bits, se deben seguir los siguientes pasos:</p>
 
-            <p className='Post-content'>Ensamblaje:</p><pre className='code-block'>
-              {`nasm -f elf32 programa.asm -o programa.o`}
-            </pre>
+            <p className='Post-content'>Ensamblaje:</p>
+            <CodeBlock laguage="bash"
+              code={`nasm -f elf32 programa.asm -o programa.o`}
+            />
             <p className='Post-content'>Enlazado:</p>
-            <pre className='code-block'>
-              {`ld -m elf_i386 programa.o -o programa`}</pre>
+            <CodeBlock laguage="bash"
+              code={`ld -m elf_i386 programa.o -o programa`} />
             <p className='Post-content'>Ejecución:</p>
-            <pre className='code-block'> {`./programa`}</pre>
+            <CodeBlock laguage="bash"
+              code={`./programa`} />
 
 
           </div>
@@ -78,25 +80,25 @@ const SumaCiclo = () => {
           <div className='content-right'>
             <h2 className='Sub-theme'>Secciones del Código</h2>
             <p className='Post-content'><span className='resaltado'>.bss</span>: Sección para variables sin inicializar que almacenan números y resultados.</p>
-            <pre className='code-block'>
-              {`section .bss
+            <CodeBlock laguage="bash"
+              code={`section .bss
     num1 resb 1
     num2 resb 1
     resultado resb 1`}
-            </pre>
+            />
             <p className='Post-content'><span className='resaltado'>.data</span>: Sección para datos inicializados como mensajes y longitudes de mensajes.</p>
-            <pre className='code-block'>
-              {`section .data
+            <CodeBlock laguage="bash"
+              code={`section .data
     msg db "Ingresa un número: ", 0
     msg_result db "Número ingresado: ", 0
     newline db 10, 0  ; Salto de línea`}
-            </pre>
+            />
             <div className="code-container">
               <p className='Post-content'>
                 <span className='resaltado'>.text</span>: Sección para el código ejecutable del programa.
               </p>
-              <pre className='code-block'>
-                {`section .text
+              <CodeBlock laguage="bash"
+                code={`section .text
     global _start
 
     _start:
@@ -172,7 +174,7 @@ const SumaCiclo = () => {
      mov eax, 1
      xor ebx, ebx
      int 0x80`}
-              </pre>
+              />
             </div>
           </div>
         </div>

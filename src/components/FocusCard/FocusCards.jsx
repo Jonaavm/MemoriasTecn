@@ -8,20 +8,18 @@ export const Card = React.memo(({ card, index, hovered, setHovered, onClick }) =
       onMouseLeave={() => setHovered(null)}
       onClick={() => onClick(card.path)}
       className={cn(
-        "relative rounded-xl overflow-hidden h-64 w-full",
+        "relative rounded-xl overflow-hidden w-full", // Quitamos h-80 para que se ajuste al contenido
         "transition-all duration-300 ease-out cursor-pointer",
         "shadow-lg border border-gray-700/20",
         hovered !== null && hovered !== index ? "blur-[1px] scale-[0.98]" : "hover:scale-[1.02]"
       )}
     >
-      {/* Imagen principal - sin efectos de color */}
       <img
         src={card.src}
         alt={card.title}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="w-full h-auto max-h-[450px] object-contain rounded-xl" // Ajustamos los estilos directamente aquí
       />
       
-      {/* Overlay de contenido con transparencia */}
       <div className={cn(
         "absolute inset-0 flex flex-col justify-end p-6",
         "bg-gradient-to-t from-black/80 to-transparent",
@@ -36,7 +34,6 @@ export const Card = React.memo(({ card, index, hovered, setHovered, onClick }) =
         </p>
       </div>
 
-      {/* Efecto de color sutil en hover */}
       <div 
         className={cn(
           "absolute inset-0 bg-gradient-to-br opacity-0",
@@ -59,7 +56,7 @@ export function FocusCards({ cards, onCardClick }) {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full px-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full px-4">
       {cards.map((card, index) => (
         <Card
           key={`${card.path}-${index}`}

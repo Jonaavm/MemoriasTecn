@@ -1,19 +1,19 @@
 import React from 'react';
 import logo from '../imagenes/logo.png'; 
 
-import p1 from '../imagenes/p1.png';
-import p2 from '../imagenes/p2.png';
-import p3 from '../imagenes/p3.png';
-import p4 from '../imagenes/p4.png';
-import p5 from '../imagenes/p5.png';
-import p6 from '../imagenes/p6.png';
-import p7 from '../imagenes/p7.png';
-import p8 from '../imagenes/p8.png';
-import p9 from '../imagenes/p9.png';
-import p10 from '../imagenes/p10.png';
-import p11 from '../imagenes/p11.png';
-import p12 from '../imagenes/p12.png';
-import p13 from '../imagenes/p13.png';
+import p1 from '../imagenes/c1.png';
+import p2 from '../imagenes/c2.png';
+import p3 from '../imagenes/c3.png';
+import p4 from '../imagenes/c4.png';
+import p5 from '../imagenes/c5.png';
+import p6 from '../imagenes/c15.png';
+import p7 from '../imagenes/c14.png';
+import p8 from '../imagenes/c8.png';
+import p9 from '../imagenes/c6.png';
+import p10 from '../imagenes/c10.png';
+import p11 from '../imagenes/c7.png';
+import p12 from '../imagenes/c12.png';
+import p13 from '../imagenes/c13.png';
 
 
 export const cardData = [
@@ -135,7 +135,6 @@ export const focusCardsData = cardData.map(card => ({
   colorTo: card.colorTo
 }));
 
-// Exportación de imágenes
 export const appImages = {
   logo
 };
