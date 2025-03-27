@@ -1,8 +1,0 @@
-.particles-container {
-  position: fixed; /* Cambiado a fixed para que siempre sea visible */
-  top: 0;
-  left: 0;
-  width: 100vw;   /* Ocupa todo el ancho de la pantalla */
-  height: 100vh;  /* Ocupa todo el alto de la pantalla */
-  z-index: -1;    /* Asegúrate que esté detrás de otros elementos */
-}

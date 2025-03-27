@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FocusCards } from '../FocusCard/FocusCards.jsx';
-import { focusCardsData } from '../../constants/cardData.js';
+import { focusCardsData } from '../../constants/cardData.jsx';
 import Aurora from '../../Backgrounds/Aurora/Aurora';
 import styles from './Home.module.css';
 import logo from '../../imagenes/logo.png';
 import { TypingAnimation } from "../magicui/typing-animation.jsx";
-import nasm from '../../imagenes/nasmL.png'
+import nasm from '../../imagenes/nasmL.png';
+import 'aos/dist/aos.css'; // Importa los estilos de AOS
 
 const Home = () => {
   const [showTitle, setShowTitle] = useState(true);
@@ -16,12 +17,23 @@ const Home = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Inicializa AOS
+    import('aos').then((AOS) => {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out',
+        once: true,
+      });
+    });
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setShowTitle(scrollY <= 50);
       setShowContent(scrollY > 100);
       setShowCards(scrollY > 600);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -32,7 +44,7 @@ const Home = () => {
 
   return (
     <div className={styles.appContainer}>
-      {/* Fondo Aurora */}
+      {/* Fondo Aurora (sin animación) */}
       <div className={styles.background}>
         <Aurora
           colorStops={["#00BFFF", "#8A2BE2", "#00CED1"]}
@@ -42,10 +54,15 @@ const Home = () => {
         />
       </div>
 
-      {/* Logo */}
-      <img src={logo} className="App-logo" alt="Logo" />
+      {/* Logo con animación fade-down */}
+      <img
+        src={logo}
+        className="App-logo"
+        alt="Logo"
+        data-aos="fade-down"
+        data-aos-delay="100"
+      />
 
-      {/* Título */}
       {showTitle && (
         <div className={styles.titleContainer}>
           <TypingAnimation
@@ -56,12 +73,14 @@ const Home = () => {
           />
         </div>
       )}
-  
-      {/* Contenedor principal de contenido */}
+
       <div className={styles.mainContent}>
-        {/* Sección de información NASM */}
         <div className={`${styles.content} ${showContent ? styles.visible : styles.hidden}`}>
-          <div className={styles.glassContainer}>
+          <div
+            className={styles.glassContainer}
+            data-aos="fade-right"
+            data-aos-delay="300"
+          >
             <h1 className={styles.postTitle}>NASM</h1>
             <p className={styles.postContent}>
               El <span className={styles.resaltado}>Netwide Assembler (NASM)</span> es un ensamblador libre y de código abierto para la arquitectura x86, utilizado para escribir programas en lenguaje ensamblador.
@@ -73,7 +92,13 @@ const Home = () => {
                 className={`${styles.image} ${styles.nasmImage}`}
               />
             </div>
+          </div>
 
+          <div
+            className={styles.glassContainer}
+            data-aos="fade-left"
+            data-aos-delay="400"
+          >
             <h2 className={styles.subTheme}>Características Principales</h2>
             <p className={styles.postContent}>NASM es conocido por su:</p>
             <ul className={styles.postContent}>
@@ -83,7 +108,10 @@ const Home = () => {
               <li>Rico conjunto de macros y directivas</li>
               <li>Optimizaciones para código de alto rendimiento</li>
             </ul>
-
+          </div>
+          <div className={styles.glassContainer}
+            data-aos="fade-left"
+            data-aos-delay="400">
             <h2 className={styles.subTheme}>Ejemplo Básico</h2>
             <p className={styles.postContent}>Un ejemplo simple para Linux x86_64:</p>
             <div className={styles.codeContainer}>
@@ -111,8 +139,12 @@ const Home = () => {
                 </code>
               </pre>
             </div>
-
-            <h2 className={styles.subTheme}>Ventajas de NASM</h2>
+          </div>
+          <div
+            className={styles.glassContainer}
+            data-aos="fade-left"
+            data-aos-delay="400"
+          ><h2 className={styles.subTheme}>Ventajas de NASM</h2>
             <p className={styles.postContent}>NASM ofrece varias ventajas:</p>
             <ul className={styles.postContent}>
               <li>Más flexible que MASM o TASM</li>
@@ -121,9 +153,7 @@ const Home = () => {
               <li>Gran comunidad de usuarios</li>
               <li>Ideal para programación de bajo nivel</li>
             </ul>
-          </div>
 
-          <div className={styles.glassContainer}>
             <h2 className={styles.subTheme}>Instalación de NASM</h2>
             <p className={styles.postContent}>Para instalar NASM:</p>
             <div className={styles.codeContainer}>
@@ -140,7 +170,6 @@ const Home = () => {
                 </code>
               </pre>
             </div>
-
             <h2 className={styles.subTheme}>Uso Básico</h2>
             <p className={styles.postContent}>Ensamblar y enlazar:</p>
             <div className={styles.codeContainer}>
@@ -158,7 +187,6 @@ const Home = () => {
               </pre>
             </div>
           </div>
-
           <div className={styles.glassContainer}>
             <h2 className={styles.subTheme}>Recursos Adicionales</h2>
             <p className={styles.postContent}>Para aprender más:</p>
@@ -169,14 +197,22 @@ const Home = () => {
               <li><a href="https://github.com/0xAX/asm" className={styles.resaltado}>Recursos en GitHub</a></li>
             </ul>
           </div>
-        </div>
-        
-        <div className={styles.glassContainer}>
+          <div
+          className={styles.glassContainer}
+          data-aos="flip-up"
+          data-aos-delay="600"
+        >
           <h1 className={styles.postTitle}>Codigos NASM</h1>
         </div>
+        </div>
+    
         
-        {/* Contenedor de las Cards */}
-        <div className={`${styles.cardsWrapper} ${showCards ? styles.visible : styles.hidden}`}>
+
+        <div
+          className={`${styles.cardsWrapper} ${showCards ? styles.visible : styles.hidden}`}
+          data-aos="fade-up"
+          data-aos-delay="700"
+        >
           <FocusCards
             cards={focusCardsData}
             onCardClick={handleCardClick}
