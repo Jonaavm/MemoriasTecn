@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/MemoriasTecn/static/css/main.2e40647b.css",
+    "main.js": "/MemoriasTecn/static/js/main.fe229f86.js",
+    "static/js/828.a086dfdf.chunk.js": "/MemoriasTecn/static/js/828.a086dfdf.chunk.js",
+    "static/js/407.05306aa5.chunk.js": "/MemoriasTecn/static/js/407.05306aa5.chunk.js",
+    "static/js/115.ad80a572.chunk.js": "/MemoriasTecn/static/js/115.ad80a572.chunk.js",
+    "static/js/453.b970ca0d.chunk.js": "/MemoriasTecn/static/js/453.b970ca0d.chunk.js",
+    "static/media/c10.png": "/MemoriasTecn/static/media/c10.2b901571f430e4ff6a24.png",
+    "static/media/c13.png": "/MemoriasTecn/static/media/c13.f3ec9494f4a261a3609f.png",
+    "static/media/c2.png": "/MemoriasTecn/static/media/c2.d5bc262aef0413d2b200.png",
+    "static/media/nasmL.png": "/MemoriasTecn/static/media/nasmL.3a80b9b8bfc1cac8b722.png",
+    "static/media/c5.png": "/MemoriasTecn/static/media/c5.5aed1b03b7d78a0452ea.png",
+    "static/media/c1.png": "/MemoriasTecn/static/media/c1.e01446631f29811beed5.png",
+    "static/media/c14.png": "/MemoriasTecn/static/media/c14.31375b691688a0a3f960.png",
+    "static/media/c4.png": "/MemoriasTecn/static/media/c4.f4995404d8005aec088d.png",
+    "static/media/c15.png": "/MemoriasTecn/static/media/c15.578b8e2fbe53dbd15339.png",
+    "static/media/logo.png": "/MemoriasTecn/static/media/logo.f18afa9e6779547a2bc5.png",
+    "static/media/c3.png": "/MemoriasTecn/static/media/c3.0aaeb72549dc37682dfe.png",
+    "static/media/c6.png": "/MemoriasTecn/static/media/c6.e07ae26d068b77f76ef2.png",
+    "static/media/c8.png": "/MemoriasTecn/static/media/c8.809284b4af309bc6dd92.png",
+    "static/media/c7.png": "/MemoriasTecn/static/media/c7.82c701c185a6fe6d1bb0.png",
+    "static/media/c12.png": "/MemoriasTecn/static/media/c12.1cb772ac0dfbe5ab3601.png",
+    "index.html": "/MemoriasTecn/index.html",
+    "main.2e40647b.css.map": "/MemoriasTecn/static/css/main.2e40647b.css.map",
+    "main.fe229f86.js.map": "/MemoriasTecn/static/js/main.fe229f86.js.map",
+    "828.a086dfdf.chunk.js.map": "/MemoriasTecn/static/js/828.a086dfdf.chunk.js.map",
+    "407.05306aa5.chunk.js.map": "/MemoriasTecn/static/js/407.05306aa5.chunk.js.map",
+    "115.ad80a572.chunk.js.map": "/MemoriasTecn/static/js/115.ad80a572.chunk.js.map",
+    "453.b970ca0d.chunk.js.map": "/MemoriasTecn/static/js/453.b970ca0d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e40647b.css",
+    "static/js/main.fe229f86.js"
+  ]
+}

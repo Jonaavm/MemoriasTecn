@@ -1,2 +1,0 @@
-# MemoriasTecn
-El blog?
