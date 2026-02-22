@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import CircularGallery from '../CircularGallery/CircularGallery'; // Este es el componente de la galería circular
 

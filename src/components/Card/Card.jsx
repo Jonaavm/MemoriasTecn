@@ -1,5 +1,4 @@
 // Card.jsx
-import React from 'react';
 import PropTypes from 'prop-types';
 import TiltedCard from '../TiltedCard/TiltedCard.tsx';
 import { BorderBeam } from '../magicui/border-beam';

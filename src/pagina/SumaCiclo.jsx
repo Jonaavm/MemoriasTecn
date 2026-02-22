@@ -1,4 +1,3 @@
-import React from 'react';
 import Aurora from '../Backgrounds/Aurora/Aurora.tsx';
 import './Global.css';
 import { Link } from 'react-router-dom';
@@ -7,11 +6,6 @@ import { MorphingText } from '../components/magicui/morphing-text.jsx';
 import { CodeBlock } from "../components/ui/code-block.jsx";
 
 const SumaCiclo = () => {
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(dummyCode);
-    alert("¡Código copiado al portapapeles!");
-  };
   return (
     
     <div className="page-container">

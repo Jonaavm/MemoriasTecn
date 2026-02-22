@@ -1,4 +1,3 @@
-import React from 'react';
 import Aurora from '../Backgrounds/Aurora/Aurora.tsx';
 import './Global.css';
 import { Link } from 'react-router-dom';
@@ -6,12 +5,7 @@ import logo from '../imagenes/logo.png';
 import { MorphingText } from '../components/magicui/morphing-text.jsx';
 import { CodeBlock } from "../components/ui/code-block.jsx";
 
-
 const Calculadora = () => {
-  const handleCopy = () => {
-    navigator.clipboard.writeText(dummyCode);
-    alert("¡Código copiado al portapapeles!");
-  };
   return (
     <div className="page-container">
       <Link to="/">

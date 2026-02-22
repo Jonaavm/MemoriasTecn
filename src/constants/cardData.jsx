@@ -1,6 +1,3 @@
-import React from 'react';
-import logo from '../imagenes/logo.png'; 
-
 import p1 from '../imagenes/c1.png';
 import p2 from '../imagenes/c2.png';
 import p3 from '../imagenes/c3.png';
